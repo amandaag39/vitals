@@ -17,9 +17,9 @@
       <div class="drawer-content">
         <!-- Page content here -->
         <div class="grid grid-cols-1 gap-6 lg:p-10 xl:grid-cols-3 bg-base-200 text-base-content p-3">
+          <%= render "layouts/header" %>
           <p class="notice"><%= notice %></p>
           <p class="alert"><%= alert %></p>
-          <%= render "layouts/header" %>
           <%= yield %>
         </div>
       </div>
@@ -27,8 +27,13 @@
         <label for="my-drawer" class="drawer-overlay"></label>
         <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content">
           <!-- Sidebar content here -->
-          <li><a href="https://daisyui.com/" target="_blank" class=""> About </a> </li>
-          <li><a href="https://github.com/mkhairi/rails-daisyui-starter" target="_blank" class=""> Source </a></li>
+          <% if current_user != nil %>
+            <li><a href="/users/sign_out" target="_blank" class=""> Sign Out </a> </li>
+            <li><a href="/users/edit" target="_blank" class=""> Edit Profile </a></li>
+          <% else %>
+            <li><a href="/users/sign_up" target="_blank" class=""> Sign Up </a> </li>
+            <li><a href="/users/sign_in" target="_blank" class=""> Sign In </a></li>
+          <% end %>
         </ul>
       </div>
     </div>
