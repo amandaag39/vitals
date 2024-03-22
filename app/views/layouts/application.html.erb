@@ -18,8 +18,6 @@
         <!-- Page content here -->
         <div class="grid grid-cols-1 gap-6 lg:p-10 xl:grid-cols-3 bg-base-200 text-base-content p-3">
           <%= render "layouts/header" %>
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
           <%= yield %>
         </div>
       </div>
@@ -27,12 +25,12 @@
         <label for="my-drawer" class="drawer-overlay"></label>
         <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content">
           <!-- Sidebar content here -->
-          <% if current_user != nil %>
-            <li><a href="/users/sign_out" target="_blank" class=""> Sign Out </a> </li>
-            <li><a href="/users/edit" target="_blank" class=""> Edit Profile </a></li>
+          <% if user_signed_in? %>
+            <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn" %>
+            <li><%= link_to 'Edit Profile', edit_user_registration_path, target: "_blank", class: "" %></li>
           <% else %>
-            <li><a href="/users/sign_up" target="_blank" class=""> Sign Up </a> </li>
-            <li><a href="/users/sign_in" target="_blank" class=""> Sign In </a></li>
+            <li><%= link_to 'Sign Up', new_user_registration_path, target: "_blank", class: "" %></li>
+            <li><%= link_to 'Sign In', new_user_session_path, target: "_blank", class: "" %></li>
           <% end %>
         </ul>
       </div>
