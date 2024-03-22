@@ -17,6 +17,8 @@
       <div class="drawer-content">
         <!-- Page content here -->
         <div class="grid grid-cols-1 gap-6 lg:p-10 xl:grid-cols-3 bg-base-200 text-base-content p-3">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
           <%= render "layouts/header" %>
           <%= yield %>
         </div>
