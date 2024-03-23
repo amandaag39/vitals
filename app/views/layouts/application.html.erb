@@ -15,18 +15,22 @@
     <div class="drawer">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content">
-        <!-- Page content here -->
-        <div class="grid grid-cols-1 gap-6 lg:p-10 xl:grid-cols-3 bg-base-200 text-base-content p-3">
+        <div class="grid grid-cols-1 gap-6 lg:p10 xl:grid-cols-3 text-base-content p-3">
           <%= render "layouts/header" %>
           <%= yield %>
-        </div>
+        </div>  
       </div>
       <div class="drawer-side">
         <label for="my-drawer" class="drawer-overlay"></label>
         <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content">
           <!-- Sidebar content here -->
-          <li><a href="https://daisyui.com/" target="_blank" class=""> About </a> </li>
-          <li><a href="https://github.com/mkhairi/rails-daisyui-starter" target="_blank" class=""> Source </a></li>
+          <% if user_signed_in? %>
+            <%= button_to 'Log out', destroy_user_session_path, method: :delete, class: "btn" %>
+            <li><%= link_to 'Edit Profile', edit_user_registration_path, target: "_blank", class: "" %></li>
+          <% else %>
+            <li><%= link_to 'Sign Up', new_user_registration_path, target: "_blank", class: "" %></li>
+            <li><%= link_to 'Log In', new_user_session_path, target: "_blank", class: "" %></li>
+          <% end %>
         </ul>
       </div>
     </div>
