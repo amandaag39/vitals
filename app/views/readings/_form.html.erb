@@ -1,0 +1,37 @@
+<%= form_with(model: reading) do |form| %>
+  <% if reading.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(reading.errors.count, "error") %> prohibited this reading from being saved:</h2>
+
+      <ul>
+        <% reading.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :measured_at, style: "display: block" %>
+    <%= form.datetime_field :measured_at %>
+  </div>
+
+  <div>
+    <%= form.label :numeric_reading, style: "display: block" %>
+    <%= form.text_field :numeric_reading %>
+  </div>
+
+  <div>
+    <%= form.label :vital_id, style: "display: block" %>
+    <%= form.text_field :vital_id %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
