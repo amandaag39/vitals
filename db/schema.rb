@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_24_194736) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_24_205450) do
+  create_table "readings", force: :cascade do |t|
+    t.datetime "measured_at"
+    t.decimal "numeric_reading", precision: 5, scale: 2
+    t.integer "vital_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_readings_on_user_id"
+    t.index ["vital_id"], name: "index_readings_on_vital_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -32,5 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_24_194736) do
     t.index ["user_id"], name: "index_vitals_on_user_id"
   end
 
+  add_foreign_key "readings", "users"
+  add_foreign_key "readings", "vitals"
   add_foreign_key "vitals", "users"
 end

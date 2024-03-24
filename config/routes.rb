@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :readings
   resources :vitals
   devise_for :views
   devise_for :users
