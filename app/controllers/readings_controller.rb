@@ -18,22 +18,32 @@ class ReadingsController < ApplicationController
 
   # GET /readings/1/edit
   def edit
+    @reading = Reading.find(params[:id])
+    @user_vitals = current_user.vitals
   end
 
   # POST /readings or /readings.json
   def create
     @reading = current_user.readings.new(reading_params)
-
+  
     respond_to do |format|
       if @reading.save
         format.html { redirect_to reading_url(@reading), notice: "Reading was successfully created." }
         format.json { render :show, status: :created, location: @reading }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @reading.errors, status: :unprocessable_entity }
+        @user_vitals = current_user.vitals
+  
+        format.html { 
+          render :new, status: :unprocessable_entity 
+        }
+        format.json { 
+          render json: @reading.errors, status: :unprocessable_entity 
+        }
       end
     end
   end
+  
+  
 
   # PATCH/PUT /readings/1 or /readings/1.json
   def update
