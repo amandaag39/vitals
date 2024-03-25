@@ -27,7 +27,7 @@
 
       <div>
         <%= form.label :vital_id, style: "display: block" %>
-        <%= form.collection_select :vital_id, @user_vitals, :id, :name, prompt: "Select a Vital", required: true %>
+        <%= form.collection_select :vital_id, @user_vitals, :id, :name, prompt: "Select a Vital", required: true, class: "input input-bordered input-accent w-full max-w-xs" %>
       </div>
 
       <div class="mt-4 text-right">
