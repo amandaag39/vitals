@@ -1,9 +1,10 @@
 class VitalsController < ApplicationController
   before_action :set_vital, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /vitals or /vitals.json
   def index
-    @vitals = Vital.all
+    @vitals = current_user.vitals
   end
 
   # GET /vitals/1 or /vitals/1.json
@@ -20,8 +21,9 @@ class VitalsController < ApplicationController
   end
 
   # POST /vitals or /vitals.json
+  
   def create
-    @vital = Vital.new(vital_params)
+    @vital = current_user.vitals.new(vital_params)
 
     respond_to do |format|
       if @vital.save
@@ -65,6 +67,6 @@ class VitalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vital_params
-      params.require(:vital).permit(:name, :category, :user_id)
+      params.require(:vital).permit(:name, :category)
     end
 end

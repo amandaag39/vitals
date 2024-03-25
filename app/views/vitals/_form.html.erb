@@ -27,11 +27,6 @@
         <%= form.select :category, Vital.category_options, {}, class: "select select-primary w-full max-w-xs" %>
       </div>
 
-      <div>
-        <%= form.label :user_id, style: "display: block" %>
-        <%= form.text_field :user_id, class: "input input-bordered input-primary w-full max-w-xs" %>
-      </div>
-
       <div class="text-right">
         <%= form.submit class: "btn btn-primary my-4 shadow-lg shadow-indigo-700/40" %>
       </div>
