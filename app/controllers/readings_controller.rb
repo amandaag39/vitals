@@ -13,26 +13,37 @@ class ReadingsController < ApplicationController
   # GET /readings/new
   def new
     @reading = Reading.new
+    @user_vitals = current_user.vitals
   end
 
   # GET /readings/1/edit
   def edit
+    @reading = Reading.find(params[:id])
+    @user_vitals = current_user.vitals
   end
 
   # POST /readings or /readings.json
   def create
-    @reading = Reading.new(reading_params)
-
+    @reading = current_user.readings.new(reading_params)
+  
     respond_to do |format|
       if @reading.save
         format.html { redirect_to reading_url(@reading), notice: "Reading was successfully created." }
         format.json { render :show, status: :created, location: @reading }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @reading.errors, status: :unprocessable_entity }
+        @user_vitals = current_user.vitals
+  
+        format.html { 
+          render :new, status: :unprocessable_entity 
+        }
+        format.json { 
+          render json: @reading.errors, status: :unprocessable_entity 
+        }
       end
     end
   end
+  
+  
 
   # PATCH/PUT /readings/1 or /readings/1.json
   def update
@@ -65,6 +76,6 @@ class ReadingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def reading_params
-      params.require(:reading).permit(:measured_at, :numeric_reading, :vital_id, :user_id)
+      params.require(:reading).permit(:measured_at, :numeric_reading, :vital_id)
     end
 end

@@ -1,22 +1,19 @@
 <div id="<%= dom_id reading %>">
   <p>
-    <strong>Measured at:</strong>
-    <%= reading.measured_at %>
+    <strong>Vital:</strong>
+    <%= reading.vital.name %>
   </p>
 
   <p>
     <strong>Numeric reading:</strong>
     <%= reading.numeric_reading %>
   </p>
-
+  
   <p>
-    <strong>Vital:</strong>
-    <%= reading.vital_id %>
+    <strong>Measured at:</strong>
+    <%= reading.measured_at %>
   </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= reading.user_id %>
-  </p>
+  
+  <br>
 
 </div>
