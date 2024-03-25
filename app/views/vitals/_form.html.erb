@@ -19,12 +19,12 @@
 
       <div>
         <%= form.label :name, style: "display: block" %>
-        <%= form.text_field :name, class: "input input-bordered input-primary w-full max-w-xs"  %>
+        <%= form.text_field :name, class: "input input-bordered input-secondary w-full max-w-xs"  %>
       </div>
 
       <div>
         <%= form.label :category, style: "display: block" %>
-        <%= form.select :category, Vital.category_options, {}, class: "select select-primary w-full max-w-xs" %>
+        <%= form.select :category, Vital.category_options, {}, class: "select select-secondary w-full max-w-xs" %>
       </div>
 
       <div class="text-right">

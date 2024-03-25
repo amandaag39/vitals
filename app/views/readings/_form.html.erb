@@ -17,17 +17,17 @@
 
       <div>
         <%= form.label :measured_at, style: "display: block" %>
-        <%= form.datetime_field :measured_at, class: "input input-bordered input-accent w-full max-w-xs" %>
+        <%= form.datetime_field :measured_at, class: "input input-bordered input-secondary w-full max-w-xs" %>
       </div>
 
       <div>
         <%= form.label :numeric_reading, style: "display: block" %>
-        <%= form.text_field :numeric_reading, class: "input input-bordered input-accent w-full max-w-xs" %>
+        <%= form.text_field :numeric_reading, class: "input input-bordered input-secondary w-full max-w-xs" %>
       </div>
 
       <div>
         <%= form.label :vital_id, style: "display: block" %>
-        <%= form.collection_select :vital_id, @user_vitals, :id, :name, prompt: "Select a Vital", required: true, class: "input input-bordered input-accent w-full max-w-xs" %>
+        <%= form.collection_select :vital_id, @user_vitals, :id, :name, prompt: "Select a Vital", required: true, class: "input input-bordered input-secondary w-full max-w-xs" %>
       </div>
 
       <div class="mt-4 text-right">
