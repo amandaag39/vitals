@@ -13,6 +13,7 @@ class ReadingsController < ApplicationController
   # GET /readings/new
   def new
     @reading = Reading.new
+    @user_vitals = current_user.vitals
   end
 
   # GET /readings/1/edit
@@ -21,7 +22,7 @@ class ReadingsController < ApplicationController
 
   # POST /readings or /readings.json
   def create
-    @reading = Reading.new(reading_params)
+    @reading = current_user.readings.new(reading_params)
 
     respond_to do |format|
       if @reading.save
@@ -65,6 +66,6 @@ class ReadingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def reading_params
-      params.require(:reading).permit(:measured_at, :numeric_reading, :vital_id, :user_id)
+      params.require(:reading).permit(:measured_at, :numeric_reading, :vital_id)
     end
 end
