@@ -1,37 +1,36 @@
-<%= form_with(model: reading) do |form| %>
-  <% if reading.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(reading.errors.count, "error") %> prohibited this reading from being saved:</h2>
+<div class="card w-96 bg-base-100 shadow-lg shadow-indigo-700/40 mb-8">
+  <div class="card-body">
+    <%= form_with(model: reading) do |form| %>
+      <% if reading.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(reading.errors.count, "error") %> prohibited this reading from being saved:</h2>
 
-      <ul>
-        <% reading.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% reading.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div>
-    <%= form.label :measured_at, style: "display: block" %>
-    <%= form.datetime_field :measured_at %>
+      <div>
+        <%= form.label :measured_at, style: "display: block" %>
+        <%= form.datetime_field :measured_at, class: "input input-bordered input-accent w-full max-w-xs" %>
+      </div>
+
+      <div>
+        <%= form.label :numeric_reading, style: "display: block" %>
+        <%= form.text_field :numeric_reading, class: "input input-bordered input-accent w-full max-w-xs" %>
+      </div>
+
+      <div>
+        <%= form.label :vital_id, style: "display: block" %>
+        <%= form.collection_select :vital_id, @user_vitals, :id, :name, prompt: "Select a Vital" %>
+      </div>
+
+      <div class="mt-4 text-right">
+        <%= form.submit class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
-
-  <div>
-    <%= form.label :numeric_reading, style: "display: block" %>
-    <%= form.text_field :numeric_reading %>
-  </div>
-
-  <div>
-    <%= form.label :vital_id, style: "display: block" %>
-    <%= form.collection_select :vital_id, @user_vitals, :id, :name, prompt: "Select a Vital" %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
