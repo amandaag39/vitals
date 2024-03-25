@@ -50,14 +50,26 @@ class VitalsController < ApplicationController
   end
 
   # DELETE /vitals/1 or /vitals/1.json
+  # DELETE /vitals/1 or /vitals/1.json
   def destroy
-    @vital.destroy
+    begin
+      @vital.destroy
 
-    respond_to do |format|
-      format.html { redirect_to vitals_url, notice: "Vital was successfully destroyed." }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to vitals_url, notice: 'Vital was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    rescue ActiveRecord::InvalidForeignKey
+      message = 'Vital cannot be deleted because it has associated readings.'
+
+      respond_to do |format|
+        format.html { redirect_to vitals_url, alert: message }
+        format.json { render json: { error: message }, status: :unprocessable_entity }
+      end
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

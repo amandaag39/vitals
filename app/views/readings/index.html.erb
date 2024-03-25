@@ -1,14 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Readings</h1>
+<div class="min-h-screen flex justify-center w-full">
+  <div class="flex flex-col items-center">
+    <div>
+    <h4 class="text-3xl mx-auto my-8 text-center">Readings</h4>
+    </div>
 
-<div id="readings">
-  <% @readings.each do |reading| %>
-    <%= render reading %>
-    <p>
-      <%= link_to "Show this reading", reading %>
-    </p>
-  <% end %>
+    <div id="readings">
+      <% @readings.each do |reading| %>
+        <%= render reading %>
+        <p>
+          <%= link_to "Show this reading", reading, class: "btn btn-outline btn-accent" %>
+        </p>
+        <br>
+      <% end %>
+    </div>
+
+    <div>
+    <%= link_to "New reading", new_reading_path, class: "btn btn-primary" %>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New reading", new_reading_path %>
