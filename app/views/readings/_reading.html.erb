@@ -8,6 +8,11 @@
     <strong>Numeric reading:</strong>
     <%= reading.numeric_reading %>
   </p>
+
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag reading.image if reading.image.attached? %>
+  </p>
   
   <p>
     <strong>Measured at:</strong>

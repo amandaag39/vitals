@@ -1,6 +1,8 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  # Set Active Storage to use S3
+  config.active_storage.service = :amazon
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
