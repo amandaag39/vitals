@@ -26,6 +26,10 @@
       </div>
 
       <div>
+        <%= form.file_field :image, class: "file-input file-input-bordered file-input-secondary w-full max-w-xs mt-5 mb-5", service: :amazon_development %>
+      </div>
+
+      <div>
         <%= form.label :vital_id, style: "display: block" %>
         <%= form.collection_select :vital_id, @user_vitals, :id, :name, prompt: "Select a Vital", required: true, class: "input input-bordered input-secondary w-full max-w-xs" %>
       </div>
