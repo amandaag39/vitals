@@ -24,26 +24,19 @@ class ReadingsController < ApplicationController
 
   # POST /readings or /readings.json
   def create
-    @reading = current_user.readings.new(reading_params)
+    # Assuming `vital_id` is passed as part of the form submission
+    vital = current_user.vitals.find(params[:reading][:vital_id])
   
-    respond_to do |format|
-      if @reading.save
-        format.html { redirect_to reading_url(@reading), notice: "Reading was successfully created." }
-        format.json { render :show, status: :created, location: @reading }
-      else
-        @user_vitals = current_user.vitals
+    # Initialize the reading with the user_id set to the current_user's id
+    @reading = Reading.new(reading_params.merge(user_id: current_user.id, vital_id: vital.id))
   
-        format.html { 
-          render :new, status: :unprocessable_entity 
-        }
-        format.json { 
-          render json: @reading.errors, status: :unprocessable_entity 
-        }
-      end
+    if @reading.save
+      redirect_to @reading, notice: "Reading was successfully created."
+    else
+      @user_vitals = current_user.vitals
+      render :new, status: :unprocessable_entity
     end
   end
-  
-  
 
   # PATCH/PUT /readings/1 or /readings/1.json
   def update

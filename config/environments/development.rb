@@ -1,8 +1,6 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  #devise email
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Settings specified here will take precedence over those in config/application.rb.
   
   # In the development environment your application's code is reloaded any time
@@ -39,6 +37,9 @@ Rails.application.configure do
   # config.active_storage.service = :local
   # Set Active Storage to use S3
   config.active_storage.service = :amazon_development
+
+  #devise email
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

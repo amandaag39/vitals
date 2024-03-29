@@ -15,21 +15,22 @@
 <div class="min-h-screen flex justify-center w-full">
   <div class="flex flex-col items-center">
     <div>
-    <h4 class="text-3xl mx-auto my-8 text-center">my Vitals</h4>
+      <h4 class="text-3xl mx-auto my-8 text-center">My Vitals</h4>
     </div>
 
     <div id="vitals">
       <% @vitals.each do |vital| %>
         <%= render vital %>
         <p>
-          <%= link_to "Show this vital", vital, class: "btn btn-outline btn-accent" %>
+          <%= link_to "View Chart", vital_chart_path(vital_id: vital.id), class: "btn btn-outline btn-secondary ml-2" %> <!-- Added the "View Chart" button here -->
+          <%= link_to "Details", vital, class: "btn btn-outline btn-accent" %>
         </p>
         <br>
       <% end %>
     </div>
 
     <div>
-    <%= link_to "New vital", new_vital_path, class: "btn btn-primary" %>
+      <%= link_to "New vital", new_vital_path, class: "btn btn-primary" %>
     </div>
   </div>
 </div>

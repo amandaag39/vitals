@@ -1,0 +1,39 @@
+<div class= "w-full">
+    <div>
+    <h4 class="text-3xl mx-auto my-4 text-center font-bold"><%= @selected_vital.name %> Chart</h4>
+    <h4 class="text-2xl mx-auto my-4 text-center"><%= chart_title(params[:time_frame]) %></h4>
+    <%= line_chart @readings_for_chart, library: {
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Dates'
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Readings'
+          }
+        }
+      },
+      title: {
+        display: true,
+        text: @selected_vital.name
+      }
+    }, height: '500px' %>
+    </div>
+
+    <div class="text-center mt-4">
+    <%= form_tag(vital_chart_path, method: "get", class: "time-frame-form") do %>
+      <%= hidden_field_tag :vital_id, @selected_vital.id %>
+      <label for="time_frame">Select a time frame:</label>
+      <%= select_tag :time_frame, options_for_select([
+          ['No selection', 'all'],
+          ['Last 2 Weeks', '2_weeks'],
+          ['Last 6 Months', '6_months'],
+          ['Last Year', '1_year']
+          ]), onchange: 'this.form.submit();' %>
+    <% end %>
+    </div>
+</div>
