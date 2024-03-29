@@ -3,6 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.1"
 
+# Chartkick gems
+gem 'chartkick'
+gem 'groupdate'
+
 # Simple form gem
 gem "simple_form"
 
