@@ -11,7 +11,7 @@
 #  updated_at      :datetime         not null
 #
 class Reading < ApplicationRecord
-  validates :vital_id, presence: { message: "You need to select a vital type." }
+  validates :vital_id, :user_id, presence: { message: "You need to select a vital type." }
   belongs_to :vital
   belongs_to :user
   has_one_attached :image
