@@ -102,6 +102,6 @@ class VitalsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def vital_params
       params.require(:vital).permit(:name, :category)
-      redirect_to vital_path
+      #redirect_to vital_path
     end
   end
