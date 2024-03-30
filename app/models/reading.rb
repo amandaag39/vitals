@@ -12,6 +12,8 @@
 #
 class Reading < ApplicationRecord
   validates :vital_id, :user_id, presence: { message: "You need to select a vital type." }
+  validates :measured_at, presence: true
+
   belongs_to :vital
   belongs_to :user
   has_one_attached :image

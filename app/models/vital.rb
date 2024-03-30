@@ -14,6 +14,8 @@ class Vital < ApplicationRecord
   belongs_to :user
   has_many :readings, dependent: :destroy
   validates :user, presence: true
+  validates :name, uniqueness: { scope: :user_id }, presence: true
+  validates :category, presence: true
 
   #for managing the enum categories
   def self.category_options
