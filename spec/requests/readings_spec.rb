@@ -13,10 +13,10 @@ RSpec.describe "/readings", type: :request do
       let(:valid_attributes) { { numeric_reading: 70, measured_at: Time.current, vital_id: vital.id } }
 
       it "creates a new Reading and redirects to the show page of the created reading" do
-        post readings_url, params: { reading: valid_attributes }
-        reading = Reading.last
-        expect(response).to redirect_to(reading_url(reading))
-      end
+  post readings_url, params: { reading: valid_attributes }
+  reading = Reading.last
+  expect(response).to redirect_to(reading_url(reading))
+end
     end
   end
 end

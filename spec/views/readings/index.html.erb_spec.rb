@@ -25,6 +25,5 @@ RSpec.describe "readings/index", type: :view do
     expect(rendered).to include("9.99")
     expect(rendered).to include("8.88")
     expect(rendered).to match(/Show this reading/)
-  end
-  
+  end  
 end
