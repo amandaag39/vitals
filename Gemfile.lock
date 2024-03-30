@@ -151,6 +151,11 @@ GEM
       color_namer
       rspec
     erubi (1.12.0)
+    factory_bot (6.4.6)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.4.3)
+      factory_bot (~> 6.4)
+      railties (>= 5.0.0)
     faker (3.2.1)
       i18n (>= 1.8.11, < 2)
     faraday (2.7.11)
@@ -458,6 +463,7 @@ DEPENDENCIES
   dotenv-rails
   draft_generators
   draft_matchers
+  factory_bot_rails
   faker
   grade_runner
   groupdate
