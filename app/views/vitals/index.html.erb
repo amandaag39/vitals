@@ -15,22 +15,27 @@
 <div class="min-h-screen flex justify-center w-full">
   <div class="flex flex-col items-center">
     <div>
-      <h4 class="text-3xl mx-auto my-8 text-center">My Vitals</h4>
+      <h4 class="text-3xl mx-auto my-8 text-center"><strong>My Vitals</strong></h4>
     </div>
 
-    <div id="vitals">
+    <div id="vitals" class="text-center">
       <% @vitals.each do |vital| %>
-        <%= render vital %>
-        <p>
-          <%= link_to "View Chart", vital_chart_path(vital_id: vital.id), class: "btn btn-outline btn-secondary ml-2" %> <!-- Added the "View Chart" button here -->
-          <%= link_to "Details", vital, class: "btn btn-outline btn-accent" %>
-        </p>
-        <br>
+      <div class="card w-96 bg-primary text-primary-content mx-auto my-4 w-full">
+        <div class="card-body">
+          <p><%= render vital %></p>
+          <div class="card-actions justify-end">
+            <p>
+              <%= link_to "View Chart", vital_chart_path(vital_id: vital.id), class: "btn btn-secondary ml-2" %> <!-- Added the "View Chart" button here -->
+              <%= link_to "Details", vital, class: "btn btn-accent" %>
+            </p>
+          </div>
+        </div>
+      </div>
       <% end %>
     </div>
 
     <div>
-      <%= link_to "New vital", new_vital_path, class: "btn btn-primary" %>
+      <%= link_to "Create a new custom vital", new_vital_path, class: "btn btn-outline btn-secondary" %>
     </div>
   </div>
 </div>

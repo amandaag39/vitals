@@ -1,4 +1,4 @@
-<div class="card w-96 bg-base-100 shadow-lg shadow-indigo-700/40 mb-8">
+<div class="card w-96 bg-base-900 shadow-lg shadow-indigo-700/40 mb-8 w-full">
   <div class="card-body">
     <%= form_with(model: vital) do |form| %>
       <% if vital.errors.any? %>
@@ -28,7 +28,7 @@
       </div>
 
       <div class="text-right">
-        <%= form.submit class: "btn btn-primary my-4 shadow-lg shadow-indigo-700/40" %>
+        <%= form.submit class: "btn btn-secondary my-4 shadow-lg shadow-indigo-700/40" %>
       </div>
     <% end %>
 

@@ -16,10 +16,20 @@
   <div class="flex flex-col items-center">
 
     <div>
-    <h4 class="text-3xl mx-auto my-8 text-center">my Readings</h4>
+    <h4 class="text-3xl mx-auto my-8 text-center">My Log</h4>
     </div>
 
     <div id="readings">
+
+      <div class="flex flex-col items-center mx=auto my-4 flex-wrap">
+      <%= raw pagy_nav(@calendar[:year]) %>
+      <%= raw pagy_nav(@calendar[:month]) %>
+      <%= raw pagy_nav(@calendar[:day]) %>
+
+      <%= raw pagy_info(@pagy) %> for <%= @calendar[:month].label(format: '%B %Y') %>
+      </div>
+
+      <div class="flex flex-col items-left">
       <% @readings.each do |reading| %>
         <%= render reading %>
         <p>
@@ -27,10 +37,16 @@
         </p>
         <br>
       <% end %>
+      </div>
+
+      <div class="flex flex-col items-center mx-auto my-4">
+      <%= raw pagy_nav(@pagy) %>     
+      </div>
     </div>
 
     <div>
-    <%= link_to "New reading", new_reading_path, class: "btn btn-primary" %>
+    <%= link_to "Add a new log entry", new_reading_path, class: "btn btn-primary" %>
     </div>
+    
   </div>
 </div>
