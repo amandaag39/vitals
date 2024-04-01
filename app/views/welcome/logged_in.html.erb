@@ -3,27 +3,27 @@
   <div class="hero-content text-center text-neutral-content">
     <div class="max-w-md">
       <h1 class="mb-5 text-5xl font-bold">Welcome to Your Health Dashboard!</h1>
-      <p class="mb-5">Explore Your Journey: Review your history at a glance.</p>
-      <%= link_to 'See My Vitals', vitals_path, class: 'btn btn-primary' %>
-      <%= link_to 'See My History', readings_path, class: 'btn btn-accent' %>  
+      <p class="mb-5">Get started by creating a custom vital unique to your health needs. Then log your first vital reading.</p>
+      <%= link_to 'Add Custom Vital', new_vital_path, class: 'btn btn-accent my-4' %>   
+      <%= link_to 'Create a log entry', new_reading_path, class: 'btn btn-secondary' %>
     </div>
   </div>
 </div>
 <div class="hero min-h-screen bg-cyan-600">
   <div class="hero-content flex-col lg:flex-row-reverse">
     <div>
-      <h1 class="text-5xl font-bold">Log a New Reading</h1>
-      <p class="py-6">Effortlessly add a new entry for any vital sign to keep your health data up-to-date.</p>
-      <%= link_to 'Log a reading', new_reading_path, class: 'btn btn-secondary' %>
+      <h1 class="text-5xl font-bold">Expand Your Health Monitoring</h1>
+      <p class="py-6">Curious about more? Easily track your custom vital signs, and see your charts.</p>
+        <%= link_to 'See My Vitals', vitals_path, class: 'btn btn-primary' %>
     </div>
   </div>
 </div>
 <div class="hero min-h-screen bg-emerald-600">
   <div class="hero-content flex-col lg:flex-row-reverse">
     <div>
-      <h1 class="text-5xl font-bold">Expand Your Health Monitoring</h1>
-      <p class="py-6">Curious about more? Easily create and track a custom vital sign unique to your health needs.</p>
-      <%= link_to 'Add Custom Vital', new_vital_path, class: 'btn btn-accent' %>
+      <h1 class="text-5xl font-bold">Draw correlations</h1>
+      <p class="py-6">Visit your logs to draw correlations between vital different patterns.</p>
+      <%= link_to 'See My History', readings_path, class: 'btn btn-accent' %>        
     </div>
   </div>
 </div>

@@ -26,9 +26,10 @@
           <!-- Sidebar content here -->
           <% if user_signed_in? %>
             <%= button_to 'Log out', destroy_user_session_path, method: :delete, class: "btn" %>
-            <li><%= link_to 'Edit Profile', edit_user_registration_path, class: "" %></li>
+            <li><%= link_to 'my Dashboard', root_path, class: "" %></li>
             <li><%= link_to 'my Vitals', vitals_path, class: "" %></li>
-            <li><%= link_to 'my Readings',readings_path, class: "" %></li>
+            <li><%= link_to 'my Log Entries',readings_path, class: "" %></li>
+            <li><%= link_to 'Edit Profile', edit_user_registration_path, class: "" %></li>
           <% else %>
             <li><%= link_to 'Sign Up', new_user_registration_path, class: "" %></li>
             <li><%= link_to 'Log In', new_user_session_path, class: "" %></li>
