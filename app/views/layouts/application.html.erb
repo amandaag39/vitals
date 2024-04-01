@@ -15,6 +15,7 @@
     <div class="drawer">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content">
+        <%= render 'layouts/notifications' %>
         <div class="grid grid-cols-1 gap-6 lg:p10 xl:grid-cols-3 text-base-content p-3">
           <%= render "layouts/header" %>
           <%= yield %>

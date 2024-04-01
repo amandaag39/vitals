@@ -1,17 +1,3 @@
-<% if notice %>
-<div role="alert" class="alert alert-success">
-  <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-  <span class="block sm:inline"><%= notice %></span>
-</div>
-<% end %>
-
-<% if alert %>
-<div role="alert" class="alert alert-error">
-  <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-  <span class="block sm:inline"><%= alert %></span>
-</div>
-<% end %>
-
 <div class="min-h-screen flex justify-center w-full">
   <div class="flex flex-col items-center">
     <div>
@@ -19,23 +5,49 @@
     </div>
 
     <div id="vitals" class="text-center">
-      <% @vitals.each do |vital| %>
-      <div class="card w-96 bg-primary text-primary-content mx-auto my-4 w-full">
-        <div class="card-body">
-          <p><%= render vital %></p>
-          <div class="card-actions justify-end">
-            <p>
-              <%= link_to "View Chart", vital_chart_path(vital_id: vital.id), class: "btn btn-secondary ml-2" %> <!-- Added the "View Chart" button here -->
-              <%= link_to "Edit", vital, class: "btn btn-accent" %>
-            </p>
-          </div>
+      <% if @vitals.empty? %>
+        <div class="text-center">
+          <p>You have no vitals yet.</p>
+          <%= link_to "Create your first vital", new_vital_path, class: "btn btn-primary" %>
         </div>
-      </div>
+      <% else %>
+        <% @vitals.each do |vital| %>
+          <% card_class = case vital.category
+                          when 'numerical' then 'bg-primary'
+                          when 'text' then 'bg-secondary'
+                          when 'image' then 'bg-accent'
+                          else 'bg-base-100'
+                          end
+          %>
+          <% btn_class = case vital.category
+                        when 'numerical' then 'btn btn-accent'
+                        when 'text' then 'btn btn-accent'
+                        when 'image' then 'btn btn-secondary'
+                        else 'btn'
+                        end
+          %>
+          <div class="card w-96 <%= card_class %> text-primary-content mx-auto my-4 w-full">
+            <div class="card-body">
+              <p><%= render vital %></p>
+              <div class="card-actions justify-end">
+                <% if vital.category == 'numerical'  %>
+                  <p>
+                    <%= link_to "View Chart", vital_chart_path(vital_id: vital.id), class: "btn btn-secondary ml-2" %>
+                  </p>
+                <% end %>
+                <p><%= link_to "Edit", edit_vital_path(vital), class: btn_class %></p>
+                <p><%= link_to '+', new_reading_path(vital_id: vital.id), class: "btn #{btn_class} ml-2" %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
 
-    <div>
-      <%= link_to "Create a new custom vital", new_vital_path, class: "btn btn-outline btn-secondary" %>
-    </div>
+    <% unless @vitals.empty? %>
+      <div>
+        <%= link_to "Create a new custom vital", new_vital_path, class: "btn" %>
+      </div>
+    <% end %>
   </div>
 </div>

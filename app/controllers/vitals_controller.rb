@@ -70,28 +70,46 @@ class VitalsController < ApplicationController
   # For chart actions
   def chart
     @selected_vital = current_user.vitals.find_by(id: params[:vital_id])
+  
+    # Default date range to the last month if no specific range is provided
+    start_date = params[:start_date].presence || 1.month.ago.beginning_of_day.to_date
+    end_date = params[:end_date].presence || Date.current
     
     if @selected_vital&.numerical?
-      case params[:time_frame]
-      when '2_weeks'
-        start_date = 2.weeks.ago.beginning_of_day
-        @readings_for_chart = @selected_vital.readings.where('measured_at >= ?', start_date)
-      when '6_months'
-        start_date = 6.months.ago.beginning_of_day
-        @readings_for_chart = @selected_vital.readings.where('measured_at >= ?', start_date)
-      when '1_year'
-        start_date = 1.year.ago.beginning_of_day
-        @readings_for_chart = @selected_vital.readings.where('measured_at >= ?', start_date)
-      else
-        @readings_for_chart = @selected_vital.readings
-      end
-  
-      @readings_for_chart = @readings_for_chart.group_by_day(:measured_at).average(:numeric_reading)
+      @readings_for_chart = @selected_vital.readings
+                              .where(measured_at: start_date..end_date)
+                              .group_by_day(:measured_at)
+                              .average(:numeric_reading)
     else
       @readings_for_chart = {}
       flash[:alert] = "Selected vital is not numerical or doesn't exist."
     end
   end
+  
+  # def chart
+  #   @selected_vital = current_user.vitals.find_by(id: params[:vital_id])
+    
+  #   if @selected_vital&.numerical?
+  #     case params[:time_frame]
+  #     when '2_weeks'
+  #       start_date = 2.weeks.ago.beginning_of_day
+  #       @readings_for_chart = @selected_vital.readings.where('measured_at >= ?', start_date)
+  #     when '6_months'
+  #       start_date = 6.months.ago.beginning_of_day
+  #       @readings_for_chart = @selected_vital.readings.where('measured_at >= ?', start_date)
+  #     when '1_year'
+  #       start_date = 1.year.ago.beginning_of_day
+  #       @readings_for_chart = @selected_vital.readings.where('measured_at >= ?', start_date)
+  #     else
+  #       @readings_for_chart = @selected_vital.readings
+  #     end
+  
+  #     @readings_for_chart = @readings_for_chart.group_by_day(:measured_at).average(:numeric_reading)
+  #   else
+  #     @readings_for_chart = {}
+  #     flash[:alert] = "Selected vital is not numerical or doesn't exist."
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

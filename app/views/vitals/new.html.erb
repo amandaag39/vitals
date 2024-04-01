@@ -1,17 +1,36 @@
 <div class="min-h-screen flex justify-center w-full">
   <div class="flex flex-col items-center">
     <div>
-    <h4 class="text-3xl mx-auto my-8 text-center"><strong>New Custom Vital</strong></h4>
+    <h4 class="text-3xl mx-auto my-8 text-center"><strong>Create a Custom Vital</strong></h4>
     </div>
 
-    <div>
+    <div class="collapse collapse-arrow bg-base-200">
+      <input type="radio" name="my-accordion-2" checked="checked" /> 
+      <div class="collapse-title text-xl font-medium">
+        <strong>Step 1: Name Your Vital</strong>
+      </div>
+      <div class="collapse-content"> 
+        <p>Decide what you want to track — Blood Glucose Levels, Meals, Symptoms, etc. Give your vital a unique name.</p>
+      </div>
+    </div>
+    <div class="collapse collapse-arrow bg-base-200">
+      <input type="radio" name="my-accordion-2" /> 
+      <div class="collapse-title text-xl font-medium">
+        <strong>Step 2: Choose a Category</strong>
+      </div>
+      <div class="collapse-content"> 
+        <p>Is it a number, an image, or text? Select the type of data your vital will represent.</p>
+      </div>
+    </div>
+
+    <div class="mt-8 w-full">
       <%= render "form", vital: @vital %>
       
 
       <br>
 
-      <div class="w-full max-w-xs text-left">
-        <%= link_to "Back to vitals", vitals_path %>
+      <div class="w-full max-w-xs text-center">
+        <%= link_to "Back to vitals", vitals_path, class: "btn btn-outline" %>
       </div>
     </div>
   </div>
