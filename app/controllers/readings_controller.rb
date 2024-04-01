@@ -3,7 +3,16 @@ class ReadingsController < ApplicationController
 
   # GET /readings or /readings.json
   def index
-    @readings = Reading.all
+    @readings = current_user.readings
+
+    ordered_readings = current_user.readings.order(measured_at: :desc)
+
+    # Setup Pagy calendar pagination with ordered readings
+    @calendar, @pagy, @readings = pagy_calendar(ordered_readings, 
+                                                year: { size: [1, 1, 1, 1] }, 
+                                                month: { size: [0, 12, 12, 0] },
+                                                day: { size: [0, 31, 31, 0] }, 
+                                                pagy: { items: 10 })
   end
 
   # GET /readings/1 or /readings/1.json
@@ -70,5 +79,19 @@ class ReadingsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def reading_params
       params.require(:reading).permit(:measured_at, :numeric_reading, :vital_id, :image)
+    end
+
+    # Pagy Methods
+
+    def pagy_calendar_period(collection)
+      # Return the starting and ending times for your readings
+      starting = collection.minimum(:measured_at)
+      ending = collection.maximum(:measured_at)
+      [starting, ending]
+    end
+  
+    def pagy_calendar_filter(collection, from, to)
+      # Filter your collection based on selected period
+      collection.where(measured_at: from...to)
     end
 end

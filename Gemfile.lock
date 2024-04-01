@@ -262,6 +262,7 @@ GEM
       sawyer (~> 0.9)
     oj (3.13.23)
     orm_adapter (0.5.0)
+    pagy (7.0.11)
     pg (1.5.4)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -473,6 +474,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jsbundling-rails
+  pagy
   pg (~> 1.1)
   pry-rails
   puma (~> 6.0)

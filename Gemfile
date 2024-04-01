@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.1"
 
+# Pagy gem for pagination
+gem 'pagy'
+
 # Chartkick gems
 gem 'chartkick'
 gem 'groupdate'
