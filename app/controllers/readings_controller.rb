@@ -3,7 +3,7 @@ class ReadingsController < ApplicationController
 
   # GET /readings or /readings.json
   def index
-    @readings = current_user.readings.order(measured_at: :desc)
+    @readings = current_user.readings.order(measured_at: :asc)
   
     if @readings.exists?
       @calendar, @pagy, @readings = pagy_calendar(@readings, 
