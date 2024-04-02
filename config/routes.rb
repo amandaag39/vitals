@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "welcome#index"
+
+  mount ActiveStorage::Engine => '/active_storage'
 end

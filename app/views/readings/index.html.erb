@@ -2,18 +2,33 @@
   <div class="flex flex-col items-center">
 
     <div>
-      <h4 class="text-3xl mx-auto my-8 text-center">My Log</h4>
+      <h4 class="text-3xl mx-auto my-4 text-center">My Log</h4>
     </div>
 
     <% if @readings.exists? %>
       <div id="readings">
-        <div class="flex flex-col items-center mx-auto my-4 flex-wrap">
-          <%= raw pagy_nav(@calendar[:year]) if @calendar %>
-          <%= raw pagy_nav(@calendar[:month]) if @calendar %>
-          <%= raw pagy_nav(@calendar[:day]) if @calendar %>
+        
 
-          <%= raw pagy_info(@pagy) if @pagy %> for <%= @calendar[:month].label(format: '%B %Y') if @calendar %>
+      <div class="card w-full bg-base-200 shadow-xl my-4">
+        <div class="card-body">
+          <h2 class="card-title">
+            <div class="text-center font-bold">
+              <p>View entries by selecting a date:</p>
+              </div>
+          </h2>
+            <div class="flex flex-col items-center mx-auto my-4 flex-wrap">
+              <%= raw pagy_nav(@calendar[:year]) if @calendar %>
+              <%= raw pagy_nav(@calendar[:month]) if @calendar %>
+              <%= raw pagy_nav(@calendar[:day]) if @calendar %>
+
+              
+            </div>
         </div>
+      </div>
+
+      <div class="text-center my-4">
+        <%= raw pagy_info(@pagy) if @pagy %> for <%= @calendar[:day].label(format: '%d') %> <%= @calendar[:month].label(format: '%B %Y') if @calendar %>
+      </div>
 
         <div class="flex flex-col items-left">
           <% @readings.each do |reading| %>

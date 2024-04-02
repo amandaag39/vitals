@@ -28,11 +28,11 @@
       <%= form_tag(vital_chart_path, method: "get", class: "time-frame-form") do %>
         <%= hidden_field_tag :vital_id, @selected_vital.id %>
         <div>
-          <label for="start_date">Start Date:</label>
+          <label for="start_date">Show from:</label>
           <%= date_field_tag :start_date, params[:start_date], class: "select select-secondary w-auto max-w-xs" %>
         </div>
         <div>
-          <label for="end_date">End Date:</label>
+          <label for="end_date">To:</label>
           <%= date_field_tag :end_date, params[:end_date], class: "select select-secondary w-auto max-w-xs" %>
         </div>
         <%= submit_tag "Update Chart", class: "btn btn-primary mt-4" %>
