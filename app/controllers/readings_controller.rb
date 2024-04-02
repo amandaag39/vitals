@@ -77,7 +77,7 @@ class ReadingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def reading_params
-      params.require(:reading).permit(:measured_at, :numeric_reading, :vital_id, :image)
+      params.require(:reading).permit(:measured_at, :numeric_reading, :text_reading, :vital_id, :image)
     end
 
     # Pagy Methods

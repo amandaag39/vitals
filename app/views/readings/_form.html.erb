@@ -32,8 +32,13 @@
 
       <div>
         <%= form.label :image, "Upload Image", style: "display: block" %>
-        <%= form.file_field :image, class: "file-input file-input-bordered file-input-secondary w-full max-w-xs mb-5", service: :amazon_development %>
+        <%= form.file_field :image, class: "file-input file-input-bordered file-input-secondary w-full max-w-xs", service: :amazon_development %>
       </div>
+
+      <div>
+        <%= form.label :text_reading, style: "display: block" %>
+        <%= form.text_area :text_reading, class: "input input-bordered input-secondary w-full max-w-xs mb-2" %>
+      </div>  
 
       <div class="mt-4 text-right">
         <%= form.submit "Create Log Entry", class: "btn btn-secondary" %>
