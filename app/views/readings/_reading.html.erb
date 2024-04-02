@@ -3,15 +3,26 @@
     <strong><%= reading.vital.name %></strong>
   </p>
 
-  <p>
-    <strong>Numeric reading:</strong>
-    <%= reading.numeric_reading %>
-  </p>
+  <% if reading.numeric_reading.present? %>
+    <p>
+      <strong>Numeric reading:</strong>
+      <%= reading.numeric_reading %>
+    </p>
+  <% end %>
 
-  <p>
-    <strong>Image:</strong>
-    <%= image_tag reading.image if reading.image.attached? %>
-  </p>
+  <% if reading.image.attached? %>
+    <p>
+      <strong>Image:</strong>
+      <%= image_tag reading.image %>
+    </p>
+  <% end %>
+
+  <% if reading.text_reading.present? %>
+    <p>
+      <strong>Text reading:</strong>
+      <%= reading.text_reading %>
+    </p>
+  <% end %>
   
   <p>
     <strong>Measured at:</strong>
@@ -19,5 +30,4 @@
   </p>
   
   <br>
-
 </div>
