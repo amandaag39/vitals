@@ -1,52 +1,62 @@
-<% if notice %>
-<div role="alert" class="alert alert-success">
-  <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-  <span class="block sm:inline"><%= notice %></span>
-</div>
-<% end %>
-
-<% if alert %>
-<div role="alert" class="alert alert-error">
-  <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-  <span class="block sm:inline"><%= alert %></span>
-</div>
-<% end %>
-
 <div class="min-h-screen flex justify-center w-full">
   <div class="flex flex-col items-center">
 
     <div>
-    <h4 class="text-3xl mx-auto my-8 text-center">My Log</h4>
+      <h4 class="text-3xl mx-auto my-4 text-center font-bold">My Log Entries</h4>
     </div>
 
-    <div id="readings">
+    <% if @readings.exists? %>
+      <div id="readings">
+        
 
-      <div class="flex flex-col items-center mx=auto my-4 flex-wrap">
-      <%= raw pagy_nav(@calendar[:year]) %>
-      <%= raw pagy_nav(@calendar[:month]) %>
-      <%= raw pagy_nav(@calendar[:day]) %>
+      <div class="card w-full bg-base-200 shadow-xl my-4">
+        <div class="card-body">
+          <h2 class="card-title">
+            <div class="text-center font-bold">
+              <p>View entries by selecting a date:</p>
+              </div>
+          </h2>
+            <div class="flex flex-col items-center mx-auto my-4 flex-wrap">
+              <%= raw pagy_nav(@calendar[:year]) if @calendar %>
+              <%= raw pagy_nav(@calendar[:month]) if @calendar %>
+              <%= raw pagy_nav(@calendar[:day]) if @calendar %>
 
-      <%= raw pagy_info(@pagy) %> for <%= @calendar[:month].label(format: '%B %Y') %>
+              
+            </div>
+        </div>
       </div>
 
-      <div class="flex flex-col items-left">
-      <% @readings.each do |reading| %>
-        <%= render reading %>
-        <p>
-          <%= link_to "Show this reading", reading, class: "btn btn-outline btn-accent" %>
-        </p>
-        <br>
-      <% end %>
+      <div class="text-center my-4">
+        <%= raw pagy_info(@pagy) if @pagy %> for <%= @calendar[:day].label(format: '%d') %> <%= @calendar[:month].label(format: '%B %Y') if @calendar %>
       </div>
 
-      <div class="flex flex-col items-center mx-auto my-4">
-      <%= raw pagy_nav(@pagy) %>     
-      </div>
-    </div>
+        <div class="flex flex-col items-left">
+          <% @readings.each do |reading| %>
+            <%= render reading %>
+            <p>
+              <%= link_to "Edit this entry", reading, class: "btn btn-outline btn-accent" %>
+            </p>
+            <br>
+          <% end %>
+        </div>
 
-    <div>
-    <%= link_to "Add a new log entry", new_reading_path, class: "btn btn-primary" %>
-    </div>
-    
+        <div class="flex flex-col items-center mx-auto my-4">
+          <%= raw pagy_nav(@pagy) if @pagy %>     
+        </div>
+      </div>
+    <% else %>
+      <div class="text-center my-10">
+        <h2>No readings found.</h2>
+        <p>Please start by adding your first reading.</p>
+        <%= link_to 'Add New Reading', new_reading_path, class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+
+    <% if @readings.exists? %>
+      <div>
+        <%= link_to "Add a new log entry", new_reading_path, class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
   </div>
 </div>

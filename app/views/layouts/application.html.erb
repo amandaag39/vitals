@@ -15,6 +15,7 @@
     <div class="drawer">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content">
+        <%= render 'layouts/notifications' %>
         <div class="grid grid-cols-1 gap-6 lg:p10 xl:grid-cols-3 text-base-content p-3">
           <%= render "layouts/header" %>
           <%= yield %>
@@ -25,13 +26,14 @@
         <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content">
           <!-- Sidebar content here -->
           <% if user_signed_in? %>
-            <%= button_to 'Log out', destroy_user_session_path, method: :delete, class: "btn" %>
-            <li><%= link_to 'Edit Profile', edit_user_registration_path, class: "" %></li>
-            <li><%= link_to 'my Vitals', vitals_path, class: "" %></li>
-            <li><%= link_to 'my Readings',readings_path, class: "" %></li>
+            <%= button_to 'Log out', destroy_user_session_path, method: :delete, class: "btn btn-outline btn-error text-xl px-4 w-full my-4" %>
+            <li><%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-outline text-xl px-4 my-4 w-full" %></li>
+            <li><%= link_to 'my Dashboard', root_path, class: "btn btn-primary text-xl px-4 my-4 w-full" %></li>
+            <li><%= link_to 'my Vitals', vitals_path, class: "btn btn-secondary text-xl px-4 my-4 w-full" %></li>
+            <li><%= link_to 'my Log Entries', readings_path, class: "btn btn-accent text-xl px-4 my-4 w-full" %></li>
           <% else %>
-            <li><%= link_to 'Sign Up', new_user_registration_path, class: "" %></li>
-            <li><%= link_to 'Log In', new_user_session_path, class: "" %></li>
+            <li><%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-primary text-xl px-4 my-4 w-full" %></li>
+            <li><%= link_to 'Log In', new_user_session_path, class: "btn btn-secondary text-xl px-4 my-4 w-full" %></li>
           <% end %>
         </ul>
       </div>

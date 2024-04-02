@@ -3,16 +3,15 @@ class ReadingsController < ApplicationController
 
   # GET /readings or /readings.json
   def index
-    @readings = current_user.readings
-
-    ordered_readings = current_user.readings.order(measured_at: :desc)
-
-    # Setup Pagy calendar pagination with ordered readings
-    @calendar, @pagy, @readings = pagy_calendar(ordered_readings, 
-                                                year: { size: [1, 1, 1, 1] }, 
-                                                month: { size: [0, 12, 12, 0] },
-                                                day: { size: [0, 31, 31, 0] }, 
-                                                pagy: { items: 10 })
+    @readings = current_user.readings.order(measured_at: :desc)
+  
+    if @readings.exists?
+      @calendar, @pagy, @readings = pagy_calendar(@readings, 
+                                                  year: { size: [1, 1, 1, 1] }, 
+                                                  month: { size: [0, 12, 12, 0] },
+                                                  day: { size: [0, 31, 31, 0] }, 
+                                                  pagy: { items: 10 })
+    end
   end
 
   # GET /readings/1 or /readings/1.json
