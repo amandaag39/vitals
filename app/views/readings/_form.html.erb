@@ -32,7 +32,7 @@
 
       <div>
         <%= form.label :image, "Upload Image", style: "display: block" %>
-        <%= form.file_field :image, class: "file-input file-input-bordered file-input-secondary w-full max-w-xs", service: :amazon_development %>
+        <%= form.file_field :image, capture: "camera", accept: "image/*", class: "file-input file-input-bordered file-input-secondary w-full max-w-xs", service: :amazon %>
       </div>
 
       <div>

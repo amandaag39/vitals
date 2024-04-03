@@ -1,33 +1,52 @@
-<div id="<%= dom_id reading %>">
-  <p>
-    <strong><%= reading.vital.name %></strong>
-  </p>
+<div class="card w-full shadow-xl bg-gradient-to-r from-blue-500/75 to-purple-500/75 shadow-lg shadow-indigo-700/40">
+  <div class="card-body">
+    <h2 class="card-title">
+      <p>
+        <div class="text-3xl my-4"><%= reading.vital.name %></div>
+      </p>
+    </h2>
+    <div id="<%= dom_id reading %>">
+      <% if reading.numeric_reading.present? %>
+        <p>
+          <strong>Numeric reading:</strong>
+          <div class="text-5xl my-4"><%= reading.numeric_reading %></div>
+        </p>
+      <% end %>
 
-  <% if reading.numeric_reading.present? %>
-    <p>
-      <strong>Numeric reading:</strong>
-      <%= reading.numeric_reading %>
-    </p>
-  <% end %>
+      <% if reading.image.attached? %>
+        <p>
+          <strong>Image:</strong>
+          <%= image_tag reading.image, class: "w-25 h-25 rounded-xl" %>
+        </p>
+      <% end %>
 
-  <% if reading.image.attached? %>
-    <p>
-      <strong>Image:</strong>
-      <%= image_tag reading.image %>
-    </p>
-  <% end %>
-
-  <% if reading.text_reading.present? %>
-    <p>
-      <strong>Text reading:</strong>
-      <%= reading.text_reading %>
-    </p>
-  <% end %>
-  
-  <p>
-    <strong>Measured at:</strong>
-    <%= reading.measured_at %>
-  </p>
-  
-  <br>
+      <% if reading.text_reading.present? %>
+        <p>
+          <strong>Text reading:</strong>
+          <div class="my-4"><%= reading.text_reading %></div>
+        </p>
+      <% end %>
+      
+      <p>
+        <strong>Measured at:</strong>
+        <div class= "my-4"><%= reading.measured_at.strftime('%B %d %Y %T') %></div>
+      </p>
+      
+      <p>
+        <div class="text-right">
+          <%= link_to reading do %>
+            <i class="fa-solid fa-pencil"></i>
+          <% end %>
+        </div>
+      </p>
+      <br>
+    </div>   
+  </div>
 </div>
+
+
+
+
+
+
+
