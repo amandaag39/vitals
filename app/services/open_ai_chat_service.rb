@@ -9,25 +9,23 @@ class OpenAiChatService
       @prompt = construct_prompt
     end
   
+
     def analyze
+        Rails.logger.debug "Prompt sent to GPT API: #{@prompt}"
         client = OpenAI::Client.new
         begin
           response = client.chat(
             parameters: {
-              model: "gpt-3.5-turbo",
+              model: "gpt-4-0125-preview",
               messages: [{ role: "user", content: @prompt}],
               temperature: 0.7,
+              # Consider adding or adjusting parameters as needed for the new model
             })
           response.dig("choices", 0, "message", "content")
         rescue Faraday::ClientError => e
-          if e.response[:status] == 429
-            "Analysis request exceeded quota. Please try again later or contact support for more assistance."
-          else
-            "An unexpected error occurred. Please try again later."
-          end
+          handle_errors(e)
         end
       end
-      
   
     private
   

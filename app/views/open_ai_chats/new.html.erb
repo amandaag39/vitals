@@ -27,6 +27,8 @@
 <% if @analysis_result.present? %>
   <div class="analysis-result">
     <h3>Analysis Result:</h3>
-    <%= @analysis_result %>
+    <div class="chat chat-end">
+      <div class="chat-bubble chat-bubble-info"><%= @analysis_result %></div>
+    </div> 
   </div>
 <% end %>

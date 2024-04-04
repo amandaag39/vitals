@@ -10,24 +10,27 @@ class UserDataService
     end
   
     def prepare_data
-      {
-        numerical_data: fetch_numerical_data,
-        text_data: fetch_text_data
-      }
+      numerical_data = fetch_numerical_data.to_a
+      text_data = fetch_text_data.to_a
+      
+      Rails.logger.debug "Numerical Data: #{numerical_data.inspect}"
+      Rails.logger.debug "Text Data: #{text_data.inspect}"
+      
+      { numerical_data: numerical_data, text_data: text_data }
     end
   
     private
   
     def fetch_numerical_data
       @user.readings.joins(:vital)
-           .where('vitals.name = ? AND vitals.category = ? AND readings.measured_at BETWEEN ? AND ?', @numerical_vital_name, 'numerical', @start_date, @end_date)
+           .where(vitals: { name: @numerical_vital_name, category: :numerical }, readings: { measured_at: @start_date..@end_date })
            .select('readings.measured_at, readings.numeric_reading')
            .order('readings.measured_at ASC')
     end
   
     def fetch_text_data
       @user.readings.joins(:vital)
-           .where('vitals.name = ? AND vitals.category = ? AND readings.measured_at BETWEEN ? AND ?', @text_vital_name, 'text', @start_date, @end_date)
+           .where(vitals: { name: @text_vital_name, category: :text }, readings: { measured_at: @start_date..@end_date })
            .select('readings.measured_at, readings.text_reading')
            .order('readings.measured_at ASC')
     end
