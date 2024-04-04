@@ -1,0 +1,32 @@
+<%= form_with url: analyze_user_data_path, method: :post, local: true, data: { turbo: false } do |form| %>
+  <div class="field">
+    <%= form.label :numerical_vital_name, "Choose a numerical vital to analyze" %>
+    <%= form.select :numerical_vital_name, options_for_select(current_user.vitals.numerical.pluck(:name)), {}, { required: true, class: "select" } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :text_vital_name, "Choose a text vital to compare" %>
+    <%= form.select :text_vital_name, options_for_select(current_user.vitals.text.pluck(:name)), {}, { required: true, class: "select" } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date, "Start Date" %>
+    <%= form.date_field :start_date, required: true, class: "input", max: Date.today.to_s %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date, "End Date" %>
+    <%= form.date_field :end_date, required: true, class: "input", max: Date.today.to_s %>
+  </div>
+
+  <%= form.submit "Analyze Data", class: "btn" %>
+<% end %>
+
+
+<!-- Render the response -->
+<% if @analysis_result.present? %>
+  <div class="analysis-result">
+    <h3>Analysis Result:</h3>
+    <%= @analysis_result %>
+  </div>
+<% end %>

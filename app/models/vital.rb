@@ -17,6 +17,9 @@ class Vital < ApplicationRecord
   validates :name, uniqueness: { scope: :user_id }, presence: true
   validates :category, presence: true
 
+  scope :numerical, -> { where(category: categories[:numerical]) }
+  scope :text, -> { where(category: categories[:text]) }
+  
   #for managing the enum categories
   def self.category_options
     categories.keys.map { |key| [key.humanize, key] }
