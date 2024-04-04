@@ -10,6 +10,9 @@ gem 'pagy'
 gem 'chartkick'
 gem 'groupdate'
 
+# GPT API gem
+gem "ruby-openai"
+
 # Simple form gem
 gem "simple_form"
 

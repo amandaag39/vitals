@@ -33,9 +33,6 @@
         <div class="flex flex-col items-left">
           <% @readings.each do |reading| %>
             <%= render reading %>
-            <p>
-              <%= link_to "Edit this entry", reading, class: "btn btn-outline btn-accent" %>
-            </p>
             <br>
           <% end %>
         </div>
