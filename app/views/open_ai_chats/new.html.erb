@@ -1,34 +1,42 @@
-<%= form_with url: analyze_user_data_path, method: :post, local: true, data: { turbo: false } do |form| %>
-  <div class="field">
-    <%= form.label :numerical_vital_name, "Choose a numerical vital to analyze" %>
-    <%= form.select :numerical_vital_name, options_for_select(current_user.vitals.numerical.pluck(:name)), {}, { required: true, class: "select" } %>
-  </div>
+<div>
+  <h2 class="text-3xl mx-auto my-4 text-center font-bold">AI Analysis</h2>
+    <div class="card bg-base-900 shadow-lg shadow-indigo-700/40 mb-8 w-full">
+      <div class="card-body">
+        <%= form_with url: analyze_user_data_path, method: :post, local: true, data: { turbo: false } do |form| %>
+          <div class="field">
+            <%= form.label :numerical_vital_name, "Choose a numerical vital to analyze" %><br>
+            <%= form.select :numerical_vital_name, options_for_select(current_user.vitals.numerical.pluck(:name)), {}, { required: true, class: "select select-info w-full max-w-xs my-4" } %>
+          </div>
 
-  <div class="field">
-    <%= form.label :text_vital_name, "Choose a text vital to compare" %>
-    <%= form.select :text_vital_name, options_for_select(current_user.vitals.text.pluck(:name)), {}, { required: true, class: "select" } %>
-  </div>
+          <div class="field">
+            <%= form.label :text_vital_name, "Choose a text vital to compare" %><br>
+            <%= form.select :text_vital_name, options_for_select(current_user.vitals.text.pluck(:name)), {}, { required: true, class: "select select-info w-full max-w-xs my-4" } %>
+          </div>
 
-  <div class="field">
-    <%= form.label :start_date, "Start Date" %>
-    <%= form.date_field :start_date, required: true, class: "input", max: Date.today.to_s %>
-  </div>
+          <div class="field">
+            <%= form.label :start_date, "Start Date" %>
+            <%= form.date_field :start_date, required: true, class: "input select select-info w-auto max-w-xs my-", max: Date.today.to_s %>
+          </div>
 
-  <div class="field">
-    <%= form.label :end_date, "End Date" %>
-    <%= form.date_field :end_date, required: true, class: "input", max: Date.today.to_s %>
-  </div>
+          <div class="field">
+            <%= form.label :end_date, "End Date" %>
+            <%= form.date_field :end_date, required: true, class: "input select select-info w-auto max-w-xs my-4", max: Date.today.to_s %>
+          </div>
 
-  <%= form.submit "Analyze Data", class: "btn" %>
-<% end %>
+          <div class="text-right">
+            <%= form.submit "Analyze Data", class: "btn btn-secondary mt-4" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
-
-<!-- Render the response -->
-<% if @analysis_result.present? %>
-  <div class="analysis-result">
-    <h3>Analysis Result:</h3>
-    <div class="chat chat-start">
-      <div class="chat-bubble chat-bubble-info"><%= @analysis_result %></div>
-    </div> 
-  </div>
-<% end %>
+    <!-- Render the response -->
+    <%# if @analysis_result.present? %>
+      <div class="analysis-result">
+        <h3>Analysis Result:</h3>
+        <div class="chat chat-start">
+          <div class="chat-bubble chat-bubble-info">Chat Prompt Reply goes here<%#= @analysis_result %></div>
+        </div> 
+      </div>
+    <%# end %>
+</div>
