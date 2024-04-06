@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.1"
 
+# Markdown processing gem
+gem 'redcarpet'
+
 # Pagy gem for pagination
 gem 'pagy'
 

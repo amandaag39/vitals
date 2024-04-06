@@ -2,7 +2,7 @@
   <h2 class="text-3xl mx-auto my-4 text-center font-bold">AI Analysis</h2>
     <div class="card bg-base-900 shadow-lg shadow-indigo-700/40 mb-8 w-full">
       <div class="card-body">
-        <%= form_with url: analyze_user_data_path, method: :post, local: true, data: { turbo: false } do |form| %>
+        <%= form_with url: analyze_user_data_path, method: :post, local: false, data: { turbo: false } do |form| %>
           <div class="field">
             <%= form.label :numerical_vital_name, "Choose a numerical vital to analyze" %><br>
             <%= form.select :numerical_vital_name, options_for_select(current_user.vitals.numerical.pluck(:name)), {}, { required: true, class: "select select-info w-full max-w-xs my-4" } %>
@@ -30,13 +30,20 @@
       </div>
     </div>
 
-    <!-- Render the response -->
-    <%# if @analysis_result.present? %>
-      <div class="analysis-result">
+    <!-- Loading indicator -->
+    <div id="loading-indicator" class="hidden">
+      <span class="loading loading-dots loading-md"></span>
+    </div>
+
+    <!-- Analysis results -->
+    <div class="analysis-result">
+      <% if @analysis_result.present? %>
         <h3>Analysis Result:</h3>
         <div class="chat chat-start">
-          <div class="chat-bubble chat-bubble-info">Chat Prompt Reply goes here<%#= @analysis_result %></div>
+          <div class="chat-bubble chat-bubble-info">
+            <%= @analysis_result %>
+          </div>
         </div> 
-      </div>
-    <%# end %>
+      <% end %>
+    </div>
 </div>

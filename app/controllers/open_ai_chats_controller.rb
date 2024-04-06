@@ -17,7 +17,6 @@ class OpenAiChatsController < ApplicationController
         data_service = UserDataService.new(current_user, numerical_vital_name, text_vital_name, start_date, end_date)
         prepared_data = data_service.prepare_data
 
-
         # Log the prepared data for debugging
         Rails.logger.debug "Numerical Data: #{prepared_data[:numerical_data].inspect}"
         Rails.logger.debug "Text Data: #{prepared_data[:text_data].inspect}"
