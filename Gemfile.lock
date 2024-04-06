@@ -328,6 +328,7 @@ GEM
       activesupport (>= 6.1.5)
       i18n
     rchardet (1.8.0)
+    redcarpet (3.6.0)
     redis (4.8.1)
     regexp_parser (2.8.1)
     reline (0.3.7)
@@ -489,6 +490,7 @@ DEPENDENCIES
   rails (~> 7.0.7, >= 7.0.7)
   rails-erd
   rails_db
+  redcarpet
   redis (~> 4.0)
   rspec-html-matchers
   rspec-rails (~> 6.0.0)

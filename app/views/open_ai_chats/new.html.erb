@@ -41,7 +41,7 @@
         <h3>Analysis Result:</h3>
         <div class="chat chat-start">
           <div class="chat-bubble chat-bubble-info">
-            <%= @analysis_result %>
+            <%= markdown_to_html(@analysis_result) %>
           </div>
         </div> 
       <% end %>
