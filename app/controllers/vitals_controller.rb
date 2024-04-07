@@ -26,7 +26,7 @@ class VitalsController < ApplicationController
 
     respond_to do |format|
       if @vital.save
-        format.html { redirect_to vital_url(@vital), notice: "Vital was successfully created." }
+        format.html { redirect_to vitals_path, notice: "Vital was successfully created." }
         format.json { render :show, status: :created, location: @vital }
       else
         format.html { render :new, status: :unprocessable_entity }
