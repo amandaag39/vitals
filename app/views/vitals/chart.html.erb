@@ -1,4 +1,8 @@
-<div class= "w-full">
+<div class="flex flex-col">
+  <!-- Right Content -->
+</div>
+
+<div class= "min-h-screen w-full">
     <div>
     <h4 class="text-3xl mx-auto my-4 text-center font-bold"><%= @selected_vital.name %> Chart</h4>
     <h4 class="text-2xl mx-auto my-4 text-center"><%= chart_title(params[:time_frame]) %></h4>
@@ -23,21 +27,23 @@
       }
     }, 
       height: '500px',
-      download: true %>
+      download: true,
+      %>
     </div>
 
-    <div class="text-center mt-4">
+    <div class="text-right mt-4 mb-4">
       <%= form_tag(vital_chart_path, method: "get", class: "time-frame-form") do %>
         <%= hidden_field_tag :vital_id, @selected_vital.id %>
         <div>
           <label for="start_date">Show from:</label>
-          <%= date_field_tag :start_date, params[:start_date], class: "select select-secondary w-auto max-w-xs" %>
+          <%= date_field_tag :start_date, params[:start_date], class: "select select-secondary w-auto max-w-xs mb-4" %>
         </div>
         <div>
           <label for="end_date">To:</label>
           <%= date_field_tag :end_date, params[:end_date], class: "select select-secondary w-auto max-w-xs" %>
         </div>
         <%= submit_tag "Update Chart", class: "btn btn-primary mt-4" %>
+        <%= link_to "Back to vitals", vitals_path, class: "btn" %>
       <% end %>
     </div>
 </div>

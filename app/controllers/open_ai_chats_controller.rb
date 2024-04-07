@@ -21,7 +21,13 @@ class OpenAiChatsController < ApplicationController
     
       # Call analyze method on the service
       @analysis_result = analysis_service.analyze
-  
+
+      # # Simulate delay for testing
+      # sleep 8 # Sleep for 60 seconds to mimic a longer API call time
+
+      # # Mock analysis result instead of making an actual API call
+      # @analysis_result = "This is a mock response from the OpenAI API after a longer wait."
+
       render :new
     end
 end

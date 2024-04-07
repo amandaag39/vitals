@@ -1,14 +1,15 @@
-<div class="min-h-screen flex justify-center w-full">
-  <div class="w-full max-w-4xl px-4"> 
+<div class="flex flex-col">
+  <!-- Left-hand Content -->
+</div>
 
-    <div>
-      <h4 class="text-3xl mx-auto my-4 text-center font-bold">My Log Entries</h4>
-    </div>
-
+  <div class="flex flex-col">
     <% if @readings.exists? %>
       <div id="readings" class="w-full">
-
-        <div class="card col-span-1 row-span-3 w-full bg-base-200 shadow-xl my-4">
+      <div>
+        <h4 class="text-3xl text-center">My Log Entries</h4>
+      </div>
+        <br>
+        <div class="card w-full bg-base-200 shadow-xl my-4">
           <div class="card-body text-center">
             <h2 class="card-title">
               <div class="font-bold">
@@ -47,10 +48,12 @@
     <% end %>
 
     <% if @readings.exists? %>
-      <div class="text-center">
+      <div class="items-center mx-auto my-4">
         <%= link_to "Add a new log entry", new_reading_path, class: "btn btn-primary" %>
       </div>
     <% end %>
-
   </div>
+
+<div class="flex flex-col">
+  <!-- Left-hand Content -->
 </div>

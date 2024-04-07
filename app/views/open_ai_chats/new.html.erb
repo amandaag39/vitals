@@ -1,49 +1,67 @@
-<div>
-  <h2 class="text-3xl mx-auto my-4 text-center font-bold">AI Analysis</h2>
-    <div class="card bg-base-900 shadow-lg shadow-indigo-700/40 mb-8 w-full">
-      <div class="card-body">
-        <%= form_with url: analyze_user_data_path, method: :post, local: false, data: { turbo: false } do |form| %>
-          <div class="field">
-            <%= form.label :numerical_vital_name, "Choose a numerical vital to analyze" %><br>
-            <%= form.select :numerical_vital_name, options_for_select(current_user.vitals.numerical.pluck(:name)), {}, { required: true, class: "select select-info w-full max-w-xs my-4" } %>
-          </div>
+<div class="flex flex-col">
+  <!-- Left-hand Content -->
+</div>
 
-          <div class="field">
-            <%= form.label :text_vital_name, "Choose a text vital to compare" %><br>
-            <%= form.select :text_vital_name, options_for_select(current_user.vitals.text.pluck(:name)), {}, { required: true, class: "select select-info w-full max-w-xs my-4" } %>
-          </div>
+<div class="flex flex-col items-center">
+  <div class="text-3xl my-4"><h2>AI Analysis</h2></div> 
+  <div class="card bg-base-900 shadow-lg shadow-indigo-700/40 mb-8 max-w-4xl w-86">
+    <div class="card-body">
+      <%= form_with url: analyze_user_data_path, method: :post, local: false, data: { turbo: false }, id: "analysis-form" do |form| %>
+        <div class="field">
+          <%= form.label :numerical_vital_name, "Choose a numerical vital to analyze", class: "block text-sm font-medium" %>
+          <%= form.select :numerical_vital_name, options_for_select(current_user.vitals.numerical.pluck(:name)), {}, { required: true, class: "select select-info w-full max-w-xs my-2" } %>
+        </div>
 
-          <div class="field">
-            <%= form.label :start_date, "Start Date" %>
-            <%= form.date_field :start_date, required: true, class: "input select select-info w-auto max-w-xs my-", max: Date.today.to_s %>
-          </div>
+        <div class="field">
+          <%= form.label :text_vital_name, "Choose a text vital to compare", class: "block text-sm font-medium" %>
+          <%= form.select :text_vital_name, options_for_select(current_user.vitals.text.pluck(:name)), {}, { required: true, class: "select select-info w-full max-w-xs my-2" } %>
+        </div>
 
-          <div class="field">
-            <%= form.label :end_date, "End Date" %>
-            <%= form.date_field :end_date, required: true, class: "input select select-info w-auto max-w-xs my-4", max: Date.today.to_s %>
-          </div>
+        <div class="field">
+          <%= form.label :start_date, "Start Date", class: "block text-sm font-medium" %>
+          <%= form.date_field :start_date, required: true, class: "input select select-info w-full max-w-xs my-2", max: Date.today.to_s %>
+        </div>
 
-          <div class="text-right">
-            <%= form.submit "Analyze Data", class: "btn btn-secondary mt-4" %>
-          </div>
-        <% end %>
-      </div>
-    </div>
+        <div class="field">
+          <%= form.label :end_date, "End Date", class: "block text-sm font-medium" %>
+          <%= form.date_field :end_date, required: true, class: "input select select-info w-full max-w-xs my-2", max: Date.today.to_s %>
+        </div>
 
-    <!-- Loading indicator -->
-    <div id="loading-indicator" class="hidden">
-      <span class="loading loading-dots loading-md"></span>
-    </div>
-
-    <!-- Analysis results -->
-    <div class="analysis-result">
-      <% if @analysis_result.present? %>
-        <h3>Analysis Result:</h3>
-        <div class="chat chat-start">
-          <div class="chat-bubble chat-bubble-info">
-            <%= markdown_to_html(@analysis_result) %>
-          </div>
-        </div> 
+        <div class="text-right">
+          <%= form.submit "Analyze Data", class: "btn btn-secondary mt-4" %>
+        </div>
       <% end %>
     </div>
+  </div>
+</div>
+
+<div class="flex-col justify-center p-4">
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var form = document.getElementById('analysis-form');
+      var loadingIndicator = document.getElementById('loading-indicator');
+
+      form.addEventListener('submit', function() {
+      loadingIndicator.classList.remove('hidden');
+       });
+    });
+  </script>
+
+  <!-- Loading indicator -->
+  <div id="loading-indicator" class="hidden text-center mt-8">
+    <strong>Chat is sorting through your logs and typing a response. This may take a few moments. Please wait.</strong><br>
+    <span class="loading loading-dots loading-lg"></span>
+  </div>
+
+  <!-- Analysis results -->
+  <div class="analysis-result">
+    <% if @analysis_result.present? %>
+      <h3 class="text-xl mt-6">Analysis Result:</h3>
+      <div class="chat chat-start mt-4">
+        <div class="chat-bubble chat-bubble-info">
+          <%= markdown_to_html(@analysis_result) %>
+        </div>
+      </div> 
+    <% end %>
+  </div> 
 </div>
