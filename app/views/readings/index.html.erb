@@ -1,36 +1,34 @@
-<div class="min-h-screen flex justify-center w-full">
-  <div class="flex flex-col items-center">
+<div class="flex flex-col">
+  <!-- Left-hand Content -->
+</div>
 
-    <div>
-      <h4 class="text-3xl mx-auto my-4 text-center font-bold">My Log Entries</h4>
-    </div>
-
+  <div class="flex flex-col">
     <% if @readings.exists? %>
-      <div id="readings">
-        
-
-      <div class="card w-full bg-base-200 shadow-xl my-4">
-        <div class="card-body">
-          <h2 class="card-title">
-            <div class="text-center font-bold">
-              <p>View entries by selecting a date:</p>
+      <div id="readings" class="w-full">
+      <div>
+        <h4 class="text-3xl text-center">My Log Entries</h4>
+      </div>
+        <br>
+        <div class="card w-full bg-base-200 shadow-xl my-4">
+          <div class="card-body text-center">
+            <h2 class="card-title">
+              <div class="font-bold">
+                <p>View entries by selecting a date:</p>
               </div>
-          </h2>
+            </h2>
             <div class="flex flex-col items-center mx-auto my-4 flex-wrap">
               <%= raw pagy_nav(@calendar[:year]) if @calendar %>
               <%= raw pagy_nav(@calendar[:month]) if @calendar %>
               <%= raw pagy_nav(@calendar[:day]) if @calendar %>
-
-              
             </div>
+          </div>
         </div>
-      </div>
 
-      <div class="text-center my-4">
-        <%= raw pagy_info(@pagy) if @pagy %> for <%= @calendar[:day].label(format: '%d') %> <%= @calendar[:month].label(format: '%B %Y') if @calendar %>
-      </div>
+        <div class="text-center my-4">
+          <%= raw pagy_info(@pagy) if @pagy %> for <%= @calendar[:day].label(format: '%d') %> <%= @calendar[:month].label(format: '%B %Y') if @calendar %>
+        </div>
 
-        <div class="flex flex-col items-left">
+        <div class="w-full flex flex-col items-center">
           <% @readings.each do |reading| %>
             <%= render reading %>
             <br>
@@ -50,10 +48,12 @@
     <% end %>
 
     <% if @readings.exists? %>
-      <div>
+      <div class="items-center mx-auto my-4">
         <%= link_to "Add a new log entry", new_reading_path, class: "btn btn-primary" %>
       </div>
     <% end %>
-
   </div>
+
+<div class="flex flex-col">
+  <!-- Left-hand Content -->
 </div>

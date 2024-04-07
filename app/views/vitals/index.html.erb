@@ -1,10 +1,14 @@
+<div class="flex flex-col">
+  <!-- Right Content -->
+</div>
+
 <div class="min-h-screen flex justify-center w-full">
   <div class="flex flex-col items-center">
     <div>
-      <h4 class="text-3xl mx-auto my-8 text-center font-bold">My Vitals</h4>
+      <h4 class="text-3xl mx-auto my-4 text-center">My Vitals</h4>
     </div>
 
-    <div id="vitals" class="text-center">
+    <div id="vitals" class="text-center flex flex-col items-center">
       <% if @vitals.empty? %>
         <div class="text-center">
           <p>You have no vitals yet.</p>
@@ -29,7 +33,7 @@
                         end
           %>
           <div class="card w-96 <%= card_class %> text-primary-content mx-auto my-4 w-full">
-            <div class="card-body">
+            <div class="card-body text-black">
               <p><%= render vital %></p>
               <div class="card-actions justify-end">
                 <% if vital.category == 'numerical'  %>

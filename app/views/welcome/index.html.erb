@@ -3,12 +3,22 @@
     <h2 class="my-4 text-4xl font-bold card-title">
       Your Health, Simplified
     </h2>
-    <p>Easily track vital signs and dietary habits to explore how your diet affects your health.</p>
+    <p class="mb-8">Easily track vital signs and dietary habits to explore how your diet affects your health.</p>
+    <br>
     <div class="card-actions justify-start mt-8 space-x-2">
       <%= link_to 'Start Tracking', new_user_registration_path, class: 'btn btn-primary' %>
       <%= link_to 'Login', new_user_session_path, class: 'btn' %>
     </div>
   </div>
+</div>
+
+<div class="card col-span-1 row-span-3 shadow-lg xl:col-span-1 bg-base-100">
+  <figure style="width: 100%; height: 100%; margin: 0;">
+    <video style="width: 100%; height: 100%; object-fit: cover;" controls>
+      <source src="path_to_your_video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </figure>
 </div>
 
 <div class="card row-span-3 shadow-lg compact bg-base-100">
@@ -37,29 +47,7 @@
   </figure>
   <div class="flex flex-col justify-center items-center text-center card-body">
     <h2 class="card-title">Empower Your Health Journey</h2>
-    <p class="text-base-content text-opacity-40">Embrace technology as your ally in navigating your wellness path.</p>
+    <p class="text-base-content text-opacity-40">Embrace AI as your ally in navigating your wellness path.</p>
   </div>
 </div>
 
-<footer class="footer p-10 bg-neutral text-neutral-content">
-  <nav>
-    <h6 class="footer-title">Services</h6> 
-    <a class="link link-hover">Branding</a>
-    <a class="link link-hover">Design</a>
-    <a class="link link-hover">Marketing</a>
-    <a class="link link-hover">Advertisement</a>
-  </nav> 
-  <nav>
-    <h6 class="footer-title">Company</h6> 
-    <a class="link link-hover">About us</a>
-    <a class="link link-hover">Contact</a>
-    <a class="link link-hover">Jobs</a>
-    <a class="link link-hover">Press kit</a>
-  </nav> 
-  <nav>
-    <h6 class="footer-title">Legal</h6> 
-    <a class="link link-hover">Terms of use</a>
-    <a class="link link-hover">Privacy policy</a>
-    <a class="link link-hover">Cookie policy</a>
-  </nav>
-</footer>
