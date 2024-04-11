@@ -2,7 +2,7 @@
   <div class="text-3xl my-4"><h2>AI Analysis</h2></div> 
   <div class="card bg-base-900 shadow-lg shadow-indigo-700/40 mb-8 max-w-4xl w-86">
     <div class="card-body">
-      <%= form_with url: analyze_user_data_path, method: :post, local: false, data: { turbo: false }, id: "analysis-form" do |form| %>
+      <%= form_with url: analysis_path, method: :post, local: false, data: { turbo: false }, id: "analysis-form" do |form| %>
         <div class="field">
           <%= form.label :numerical_vital_name, "Choose a numerical vital to analyze", class: "block text-sm font-medium" %>
           <%= form.select :numerical_vital_name, options_for_select(current_user.vitals.numerical.pluck(:name)), {}, { required: true, class: "select select-info w-full max-w-xs my-2" } %>

@@ -20,6 +20,17 @@ class Reading < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
+  scope :measured_at_between, ->(start_date, end_date) { where(measured_at: start_date..end_date) }
+  scope :measured_at_before, ->(end_date) { where("measured_at < ?", end_date) }
+  scope :measured_at_after, ->(start_date) { where("measured_at > ?", start_date) }
+  scope :for_vital_and_category, ->(name, category) {
+    joins(:vital).where(vitals: { name: name, category: Vital.categories[category] })
+  }
+  #scope :for_vital, -> (name, category) { joins(:vital).where( vitals: { name: name, category: category }) }
+  scope :for_numerical_prompt, -> { select(:measured_at, :numeric_reading) }
+  scope :for_text_prompt, -> { select(:measured_at, :text_reading) }
+  scope :default_order, -> { order('readings.measured_at DESC') }
+
   private
 
   def appropriate_reading_type_present
