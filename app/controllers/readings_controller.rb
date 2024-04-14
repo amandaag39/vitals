@@ -1,9 +1,11 @@
 class ReadingsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_reading, only: %i[ show edit update destroy ]
 
   # GET /readings or /readings.json
   def index
-    @readings = current_user.readings.order(measured_at: :asc)
+    @readings = policy_scope(Reading).order(measured_at: :asc)
+    #@readings = current_user.readings.order(measured_at: :asc)
   
     if @readings.exists?
       @calendar, @pagy, @readings = pagy_calendar(@readings, 
@@ -16,6 +18,7 @@ class ReadingsController < ApplicationController
 
   # GET /readings/1 or /readings/1.json
   def show
+    authorize @reading
   end
 
   # GET /readings/new

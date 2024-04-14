@@ -1,6 +1,6 @@
 class VitalsController < ApplicationController
   before_action :set_vital, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, #except: [:index, :show]
 
   # GET /vitals or /vitals.json
   def index
