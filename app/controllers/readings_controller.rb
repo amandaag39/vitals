@@ -19,7 +19,7 @@ class ReadingsController < ApplicationController
   # GET /readings/new
   def new
     @reading = Reading.new
-    authorize @reading, :create? 
+    authorize @reading, :new? 
     @user_vitals = current_user.vitals
   end
 
