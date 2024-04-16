@@ -6,6 +6,10 @@ class ReadingPolicy < ApplicationPolicy
       end
     end
   
+    def create?
+        user.present?
+    end
+    
     def show?
       record.user_id == user.id
     end

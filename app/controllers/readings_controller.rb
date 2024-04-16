@@ -1,11 +1,11 @@
 class ReadingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_reading, only: %i[ show edit update destroy ]
+  before_action :authorize_reading, only: %i[show edit update destroy]
 
   # GET /readings or /readings.json
   def index
     @readings = policy_scope(Reading).order(measured_at: :asc)
-    #@readings = current_user.readings.order(measured_at: :asc)
   
     if @readings.exists?
       @calendar, @pagy, @readings = pagy_calendar(@readings, 
@@ -16,31 +16,25 @@ class ReadingsController < ApplicationController
     end
   end
 
-  # GET /readings/1 or /readings/1.json
-  def show
-    authorize @reading
-  end
-
   # GET /readings/new
   def new
     @reading = Reading.new
+    authorize @reading, :create? 
     @user_vitals = current_user.vitals
   end
 
   # GET /readings/1/edit
   def edit
-    @reading = Reading.find(params[:id])
     @user_vitals = current_user.vitals
   end
 
   # POST /readings or /readings.json
   def create
-    # Assuming `vital_id` is passed as part of the form submission
     vital = current_user.vitals.find(params[:reading][:vital_id])
-  
-    # Initialize the reading with the user_id set to the current_user's id
     @reading = Reading.new(reading_params.merge(user_id: current_user.id, vital_id: vital.id))
   
+    authorize @reading
+
     if @reading.save
       redirect_to @reading, notice: "Reading was successfully created."
     else
@@ -73,17 +67,19 @@ class ReadingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    def authorize_reading
+      authorize @reading
+    end
+
     def set_reading
       @reading = Reading.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def reading_params
       params.require(:reading).permit(:measured_at, :numeric_reading, :text_reading, :vital_id, :image)
     end
 
-    # Pagy Methods
+    # Pagy Calendar Pagination Methods
 
     def pagy_calendar_period(collection)
       # Return the starting and ending times for your readings
