@@ -5,13 +5,17 @@ class ReadingPolicy < ApplicationPolicy
         scope.where(user_id: user.id)
       end
     end
+
+    def index?
+      user.present?
+    end
   
     def create?
-        user.present?
+      user.present?
     end
 
     def new?
-        create?
+      create?
     end
 
     def show?

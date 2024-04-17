@@ -1,7 +1,6 @@
 class ReadingsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_reading, only: %i[ show edit update destroy ]
-  before_action :authorize_reading, only: %i[show edit update destroy]
+  before_action { authorize(@reading || Reading) }
 
   # GET /readings or /readings.json
   def index
@@ -19,7 +18,6 @@ class ReadingsController < ApplicationController
   # GET /readings/new
   def new
     @reading = Reading.new
-    authorize @reading, :new? 
     @user_vitals = current_user.vitals
   end
 
@@ -32,8 +30,6 @@ class ReadingsController < ApplicationController
   def create
     vital = current_user.vitals.find(params[:reading][:vital_id])
     @reading = Reading.new(reading_params.merge(user_id: current_user.id, vital_id: vital.id))
-  
-    authorize @reading
 
     if @reading.save
       redirect_to @reading, notice: "Reading was successfully created."
@@ -67,10 +63,6 @@ class ReadingsController < ApplicationController
   end
 
   private
-    def authorize_reading
-      authorize @reading
-    end
-
     def set_reading
       @reading = Reading.find(params[:id])
     end

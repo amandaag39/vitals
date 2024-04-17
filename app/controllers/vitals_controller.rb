@@ -1,5 +1,4 @@
 class VitalsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_vital, only: %i[ show edit update destroy ]
   before_action :authorize_vital, only: %i[show edit update destroy]
 
