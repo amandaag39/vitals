@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   # OpenAI custom route
-  post 'analyze_user_data', to: 'open_ai_chats#analyze_user_data'
-  get 'analyze', to: 'open_ai_chats#new'
+  post 'analysis', to: 'analysis#create', as: :analysis
+  get 'analysis/new', to: 'analysis#new', as: :new_analysis
 
   # Define the chart route above the resources declaration
   get 'vitals/chart/:vital_id', to: 'vitals#chart', as: :vital_chart

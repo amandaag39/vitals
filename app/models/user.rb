@@ -18,4 +18,47 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :vitals, dependent: :destroy
   has_many :readings, through: :vitals
+
+
+  # TODO: consider combining numeric_reading and text_reading into 1 'value' column
+  def fetch_numerical_data(numerical_vital_name, start_date, end_date)
+    readings
+      .measured_at_after(start_date)
+      .measured_at_before(end_date)
+      .for_vital_and_category(numerical_vital_name, 'numerical')
+      .for_numerical_prompt
+      .default_order
+  end
+
+  def fetch_text_data(text_vital_name, start_date, end_date)
+    readings
+      .measured_at_after(start_date)
+      .measured_at_before(end_date)
+      .for_vital_and_category(text_vital_name, 'text')
+      .for_text_prompt
+      .default_order
+  end
+
+  # TODO: consider passing in array of vital names eg ["meals", "blood glucose", "symptoms"]
+  def prompt(numerical_vital_name, text_vital_name, start_date, end_date)
+    numerical_data = fetch_numerical_data(numerical_vital_name, start_date, end_date)
+    text_data = fetch_text_data(text_vital_name, start_date, end_date)
+
+    numerical_readings_formatted = numerical_data.map { |entry| "#{entry.measured_at.strftime('%Y-%m-%d %H:%M')}: #{entry.numeric_reading}" }.join("\n")
+    text_readings_formatted = text_data.map { |entry| "#{entry.measured_at.strftime('%Y-%m-%d %H:%M')}: #{entry.text_reading}" }.join("\n")
+
+    <<~PROMPT
+    You are a holistic nutritionist seeking to analyze a patients daily health logs including one or more biomarkers and their meals.
+    Your approach to treating people is that each individual reacts differently to different foods.
+    With that in mind, please look for correlations between certain meals and fluctuations in biomarker readings and provide those insights.
+    Please give the patient one actionable step they can take that's simple to improve their situation. Analyze the following user data.
+    Numerical readings of #{numerical_vital_name} and textual descriptions of #{text_vital_name}:
+
+    #{numerical_vital_name} readings:
+    #{numerical_readings_formatted}
+
+    #{text_vital_name} descriptions:
+    #{text_readings_formatted}
+    PROMPT
+  end
 end

@@ -12,7 +12,7 @@
 class Vital < ApplicationRecord
   enum category: { numerical: 0, text: 1, image: 2 }
   belongs_to :user
-  has_many :readings, dependent: :destroy
+  has_many :readings, dependent: :restrict_with_error #:destroy
   validates :user, presence: true
   validates :name, uniqueness: { scope: :user_id }, presence: true
   validates :category, presence: true
