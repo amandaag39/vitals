@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ *= require review_cards
+ */
+
 .pagy {
   display: flex;
   flex-wrap: wrap;
@@ -64,3 +68,4 @@
   border-style: none;
   background-color: rgb(243 244 246);
 }
+
