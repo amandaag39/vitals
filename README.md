@@ -18,7 +18,15 @@ Vitals is a user-centric web application designed to streamline the tracking of 
 * AWS S3
 * Open AI API
 
-Create an master_key file and add your API tokens for these services to the encrypted credentials file.
+## Configuration
+
+To configure your application to use AWS S3 and OpenAI API services, follow these detailed steps:
+
+### 1. Generate a Master Key
+If you do not already have a `master.key` file, you can generate one by running:
+```bash
+EDITOR="code --wait" rails credentials:edit
+```
   
 ## Installation
 
