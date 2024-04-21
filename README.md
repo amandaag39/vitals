@@ -17,7 +17,7 @@ https://github.com/amandaag39/vitals/assets/71214594/c109d27a-5261-4399-aead-2ea
 https://github.com/amandaag39/vitals/assets/71214594/2090d88d-eeba-42b3-b7c2-27b45291a0f0
 
 ### Image Logging with AWS
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4y9W_lasucI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Watch the video](https://img.youtube.com/vi/4y9W_lasucI/0.jpg)](https://youtube.com/shorts/4y9W_lasucI?feature=share)
 
 ### Analysis with Open AI API
 https://github.com/amandaag39/vitals/assets/71214594/fe66f59e-f899-483a-aae7-cc7f50da1305
