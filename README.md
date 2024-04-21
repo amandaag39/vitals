@@ -9,20 +9,28 @@ Vitals is a user-centric web application designed to streamline the tracking of 
 
 ## Main Features
 ### Custom vital tracking
+Users can create their own custom vitals to track. These can be numeric, image, and text based. The most useful way to use these vitals is to create one named 'Meals' and track anything against that Vital. 
+
 https://github.com/amandaag39/vitals/assets/71214594/5ebf5c53-0fed-4c8e-9b03-8cf9eff011aa
 
 ### Daily Average Charts for Numeric Vitals
+For numeric vitals, such as blood glucose, Vitals comes with Charts that track daily Vital averages for a quick reference point for facilitating correlation identication. 
+
 https://github.com/amandaag39/vitals/assets/71214594/c109d27a-5261-4399-aead-2eabb85ac2bd
 
 ### Calendar Paginated Logs
+Best used in conjunction with numeric vital charts, the calendar paginated logs allow the user to target peak and low dates and troubleshoot which foods may be the cause of these fluctuations.
+
 https://github.com/amandaag39/vitals/assets/71214594/2090d88d-eeba-42b3-b7c2-27b45291a0f0
 
 ### Image Logging with AWS
+As scaffolding for Image support, users can log meals as image values to facilitate intuitive and quick logging. 
 [![Watch the video](https://img.youtube.com/vi/4y9W_lasucI/0.jpg)](https://youtube.com/shorts/4y9W_lasucI?feature=share)
 
 ### Analysis with Open AI API
-https://github.com/amandaag39/vitals/assets/71214594/fe66f59e-f899-483a-aae7-cc7f50da1305
+Currently working with two vital types, users can gauge correlations from a birds eye perspective, using Open AI to search for correlations and provide meal improvements and recommendations. 
 
+https://github.com/amandaag39/vitals/assets/71214594/fe66f59e-f899-483a-aae7-cc7f50da1305
 
 ## Technologies Used
 * Rails 7
