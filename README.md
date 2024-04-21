@@ -8,17 +8,19 @@ Vitals is a user-centric web application designed to streamline the tracking of 
 
 ## Main Features
 ### Custom vital tracking
-![Create your own custom vitals](path/to/
+https://github.com/amandaag39/vitals/assets/71214594/5ebf5c53-0fed-4c8e-9b03-8cf9eff011aa
 
-https://github.com/amandaag39/vitals/assets/71214594/a2587ddb-3d51-43dd-828b-3e25c5468e18
-
-image.png)
+### Daily Average Charts for Numeric Vitals
+https://github.com/amandaag39/vitals/assets/71214594/c109d27a-5261-4399-aead-2eabb85ac2bd
 
 ### Calendar Paginated Logs
+https://github.com/amandaag39/vitals/assets/71214594/2090d88d-eeba-42b3-b7c2-27b45291a0f0
 
 ### Image Logging with AWS
 
 ### Analysis with Open AI API
+https://github.com/amandaag39/vitals/assets/71214594/fe66f59e-f899-483a-aae7-cc7f50da1305
+
 
 
 ## Technologies Used
