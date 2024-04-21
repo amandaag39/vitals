@@ -18,9 +18,9 @@ https://github.com/amandaag39/vitals/assets/71214594/2090d88d-eeba-42b3-b7c2-27b
 
 ### Image Logging with AWS
 
+
 ### Analysis with Open AI API
 https://github.com/amandaag39/vitals/assets/71214594/fe66f59e-f899-483a-aae7-cc7f50da1305
-
 
 
 ## Technologies Used
