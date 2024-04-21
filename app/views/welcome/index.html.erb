@@ -52,88 +52,105 @@
 <h2 class="my-4 text-3xl font-bold text-center mt-8 w-full">What do our users say?</h2>
 
 <div class="carousel carousel-center xl:col-span-3 bg-neutral rounded-box">
+  <!-- Samantha's Review Card -->
   <div class="carousel-item">
     <div class="review-card rounded-box">
       <div class="avatar">
-        <div class="rounded-full">
-          <%= image_tag "samantha.jpg", alt: "Samantha L." %>
-          <strong>Samantha L.</strong>
-          <div class="stars">
-            &#9733; &#9733; &#9733; &#9733; &#9733;
-          </div>
-        </div>
+        <%= image_tag "samantha.jpg", alt: "Samantha L.", class: "avatar-image" %>
       </div>
-      <p>"Absolutely love this app! As someone who has to monitor my blood glucose levels closely, this app has been a lifesaver. It's super easy to log meals and see how they affect my glucose. The visual reports help me understand trends and make smarter dietary choices. Highly recommend for anyone trying to manage their health better!"</p>
-    </div>
-  </div>
-  
-  <div class="carousel-item">
-    <div class="review-card rounded-box">
-      <div class="avatar">
-        <div class="rounded-full">
-          <%= image_tag "mike.jpg", alt: "Mike D." %>
-          <strong>Mike D.</strong>
-          <div class="stars">
-            &#9733; &#9733; &#9733; &#9733; &#9733;
-          </div>
-        </div>
+      <div class="name">
+        <strong>Samantha L.</strong>
       </div>
-      <p>"This app is exactly what I needed to track the connection between what I eat and how I feel. Since I started using it, I’ve noticed a huge improvement in managing my heart rate and energy levels. The interface is user-friendly and the tips are incredibly helpful. A must-have for anyone taking charge of their health!"</p>
+      <div class="stars">
+        &#9733; &#9733; &#9733; &#9733; &#9733;
+      </div>
+      <p class="review-text">
+        "Absolutely love this app! As someone who has to monitor my blood glucose levels closely, this app has been a lifesaver. It's super easy to log meals and see how they affect my glucose. The visual reports help me understand trends and make smarter dietary choices. Highly recommend for anyone trying to manage their health better!"
+      </p>
     </div>
   </div>
 
+  <!-- Mike's Review Card -->
   <div class="carousel-item">
     <div class="review-card rounded-box">
       <div class="avatar">
-        <div class="rounded-full">
-          <%= image_tag "aaron.jpg", alt: "Aaron M." %>
-          <strong>Aaron M.</strong>
-          <div class="stars">
-            &#9733; &#9733; &#9733; &#9733; &#9733;
-          </div>
-        </div>
+        <%= image_tag "mike.jpg", alt: "Mike D.", class: "avatar-image" %>
       </div>
-      <p>"Great app for health enthusiasts and anyone needing to monitor specific health markers. It’s so helpful to see the direct impact of different foods on my blood glucose and overall wellness. The detailed analytics and customization options make it an invaluable tool for personal health management."</p>
+      <div class="name">
+        <strong>Mike D.</strong>
+      </div>
+      <div class="stars">
+        &#9733; &#9733; &#9733; &#9733; &#9733;
+      </div>
+      <p class="review-text">
+        "This app is exactly what I needed to track the connection between what I eat and how I feel. Since I started using it, I’ve noticed a huge improvement in managing my heart rate and energy levels. The interface is user-friendly and the tips are incredibly helpful. A must-have for anyone taking charge of their health!"
+      </p>
     </div>
   </div>
 
+  <!-- Aaron's Review Card (Already updated) -->
   <div class="carousel-item">
     <div class="review-card rounded-box">
       <div class="avatar">
-        <div class="rounded-full">
-          <%= image_tag "james.jpg", alt: "James P." %>
-          <strong>James P.</strong>
-          <div class="stars">
-            &#9733; &#9733; &#9733; &#9733; &#9733;
-          </div>
-        </div>
+        <%= image_tag "aaron.jpg", alt: "Aaron M.", class: "avatar-image" %>
       </div>
-      <p>"I've been using this app for a few months now, and it's fantastic for anyone with food sensitivities or anyone who just wants to understand their body better. Tracking my meals and symptoms has helped me identify foods that were causing discomfort that I wasn’t aware of before. The app is intuitive and packed with useful features!"</p>
+      <div class="name">
+        <strong>Aaron M.</strong>
+      </div>
+      <div class="stars">
+        &#9733; &#9733; &#9733; &#9733; &#9733;
+      </div>
+      <p class="review-text">
+        "Great app for health enthusiasts and anyone needing to monitor specific health markers. It’s so helpful to see the direct impact of different foods on my blood glucose and overall wellness. The detailed analytics and customization options make it an invaluable tool for personal health management."
+      </p>
     </div>
   </div>
 
+  <!-- James's Review Card -->
   <div class="carousel-item">
     <div class="review-card rounded-box">
       <div class="avatar">
-        <div class="rounded-full">
-          <%= image_tag "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg", alt: "Lily T." %>
-          <strong>Lily T.</strong>
-          <div class="stars">
-            &#9733; &#9733; &#9733; &#9733; &#9733;
-          </div>
-        </div>
+        <%= image_tag "james.jpg", alt: "James P.", class: "avatar-image" %>
       </div>
-      <p>"This app has revolutionized the way I manage my diet and health. Tracking my food intake and observing how it affects my symptoms has empowered me to make better decisions about what I eat. The app is not only functional but also beautifully designed, making the process of logging and reviewing data a pleasure."</p>
+      <div class="name">
+        <strong>James P.</strong>
+      </div>
+      <div class="stars">
+        &#9733; &#9733; &#9733; &#9733; &#9733;
+      </div>
+      <p class="review-text">
+        "I've been using this app for a few months now, and it's fantastic for anyone with food sensitivities or anyone who just wants to understand their body better. Tracking my meals and symptoms has helped me identify foods that were causing discomfort that I wasn’t aware of before. The app is intuitive and packed with useful features!"
+      </p>
+    </div>
+  </div>
+
+  <!-- Lily's Review Card -->
+  <div class="carousel-item">
+    <div class="review-card rounded-box">
+      <div class="avatar">
+        <%= image_tag "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg", alt: "Lily T.", class: "avatar-image" %>
+      </div>
+      <div class="name">
+        <strong>Lily T.</strong>
+      </div>
+      <div class="stars">
+        &#9733; &#9733; &#9733; &#9733; &#9733;
+      </div>
+      <p class="review-text">
+        "This app has revolutionized the way I manage my diet and health. Tracking my food intake and observing how it affects my symptoms has empowered me to make better decisions about what I eat. The app is not only functional but also beautifully designed, making the process of logging and reviewing data a pleasure."
+      </p>
     </div>
   </div>
 </div>
 
 
-<%# <style>
+
+<style>
 .carousel {
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
+    background-color: transparent; // Or set it to the desired background color
 }
 
 .carousel-item {
@@ -144,51 +161,49 @@
 }
 
 .review-card {
+    /* ...other styles... */
     background-color: mediumpurple;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 20px;
-    width: 100%; /* Ensures the card fills the carousel-item */
-    height: 500px; /* Fixed height to maintain uniformity */
-    position: relative; /* Needed for absolute positioning of the avatar */
+    padding: 40px;
+    width: 100%;
+    height: 500px;
+    position: relative;
 }
 
-.avatar {
-    position: absolute;
-    top: 30px;  /* Ensures the avatar is at a fixed position from the top */
-    left: 50%;  /* Centers the container horizontally */
-    transform: translateX(-50%);  /* Corrects half the container's width to truly center it */
-    display: flex;
-    flex-direction: column;
-    align-items: center;  /* This will center all content inside horizontally */
-    width: 100%;  /* Ensures the container spans the full width of its parent */
-    text-align: center;  /* Ensures text inside is centered */
+.avatar, .name, .stars, .review-text {
+    width: 100%; /* Ensures each element spans the full width */
+    display: block; /* Stack elements on top of each other */
+    text-align: center;
 }
 
 .avatar img {
     width: 100px;
     height: 100px;
-    border-radius: 50%;  /* Rounds the avatar */
-    margin: 0 auto;  /* Centers the image within the flex container */
-    margin-bottom: 5px;
-    display: block;  /* Ensures the image is treated as a block-level element for centering */
+    border-radius: 50%;
+    margin: 0 auto 20px; /* Adds bottom margin to create space between the avatar and the name */
+}
+
+.name {
+    /* Adjust styling as needed */
+    margin-bottom: 10px; /* Creates space between the name and stars */
 }
 
 .stars {
-    font-size: 24px;
     color: gold;
-    margin: 5px 0; /* Adds space above and below the stars */
+    font-size: 24px;
+    margin-bottom: 10px; /* Creates space between the stars and the review text */
 }
 
-.review-text p, .review-card p {
+.review-text {
     font-size: 14px;
     color: #fff;
-    padding: 0 10px;
-    margin-top: 190px; /* Increased margin to prevent overlapping with stars */
+    padding: 0 5px;
+    margin-top: 10px; /* Creates space above the review text */
+    max-height: 200px; /* Maximum height of the paragraph to limit its size */
+    overflow-y: auto; /* Allows vertical scrolling if content overflows */
 }
 
 /* Responsive adjustments for larger screens */
@@ -228,4 +243,3 @@
 }
 
 </style>
- %>
