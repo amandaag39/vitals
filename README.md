@@ -8,21 +8,17 @@ Vitals is a user-centric web application designed to streamline the tracking of 
 
 ## Main Features
 ### Custom vital tracking
+![Create your own custom vitals](path/to/
+
+https://github.com/amandaag39/vitals/assets/71214594/a2587ddb-3d51-43dd-828b-3e25c5468e18
+
+image.png)
 
 ### Calendar Paginated Logs
 
 ### Image Logging with AWS
 
 ### Analysis with Open AI API
-<div>
-    <a href="https://www.loom.com/share/921a238ae50542e08536748e5f8339e7">
-      <p>Exploring a Technical Issue with Screen Sharing - Watch Video</p>
-    </a>
-    <a href="https://www.loom.com/share/921a238ae50542e08536748e5f8339e7">
-      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/921a238ae50542e08536748e5f8339e7-1713738102411-with-play.gif">
-    </a>
-  </div>
-
 
 
 ## Technologies Used
