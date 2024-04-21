@@ -46,9 +46,9 @@ Save and close the file. The changes will be encrypted and saved securely, acces
 
 ### 3. Ensure the Security of the Master Key
 Never commit your master.key or the credentials file to version control. Add the master.key to your .gitignore file to prevent it from being accidentally pushed to your repository:
-
+```bash
 echo 'config/master.key' >> .gitignore
-
+```
 ## Installation
 
 Current Main Branch: rails 7 + esbuild
