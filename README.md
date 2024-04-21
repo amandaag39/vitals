@@ -7,6 +7,13 @@ Vitals is a user-centric web application designed to streamline the tracking of 
 * Installation
 
 ## Main Features
+### Custom vital tracking
+
+### Calendar Paginated Logs
+
+### Image Logging with AWS
+
+### Analysis with Open AI API
 
 
 ## Technologies Used
