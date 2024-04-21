@@ -59,6 +59,7 @@ echo 'config/master.key' >> .gitignore
 bundle install
 yarn install
 rails db:migrate
+rake sample_data
 bin/dev
 ```
 ### Rails 6 + Webpacker
