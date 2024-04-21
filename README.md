@@ -14,6 +14,15 @@ Vitals is a user-centric web application designed to streamline the tracking of 
 ### Image Logging with AWS
 
 ### Analysis with Open AI API
+[![Video Thumbnail](<div>
+    <a href="https://www.loom.com/share/921a238ae50542e08536748e5f8339e7">
+      <p>Exploring a Technical Issue with Screen Sharing - Watch Video</p>
+    </a>
+    <a href="https://www.loom.com/share/921a238ae50542e08536748e5f8339e7">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/921a238ae50542e08536748e5f8339e7-1713738102411-with-play.gif">
+    </a>
+  </div>)](https://url_to_video)
+
 
 
 ## Technologies Used
