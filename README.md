@@ -33,11 +33,11 @@ https://github.com/amandaag39/vitals/assets/71214594/fe66f59e-f899-483a-aae7-cc7
 * AWS S3
 * Open AI API
 
-## Configuration
+### Configuration
 
 To configure your application to use AWS S3 and OpenAI API services, follow these detailed steps:
 
-### 1. Generate a Master Key
+#### 1. Generate a Master Key
 If you do not already have a `master.key` file, you can generate one by running:
 ```bash
 EDITOR="code --wait" rails credentials:edit
@@ -45,7 +45,7 @@ EDITOR="code --wait" rails credentials:edit
 
 This command will open the credentials file in Visual Studio Code (replace "code --wait" with your preferred editor), and a new master.key file will be generated automatically if it does not exist.
 
-### 2. Add Service API Tokens
+#### 2. Add Service API Tokens
 Inside the opened credentials file, add your API tokens and other sensitive configuration variables in a structured format. For example:
 
 ```yaml
@@ -59,7 +59,7 @@ openai:
 
 Save and close the file. The changes will be encrypted and saved securely, accessible only via the master.key.
 
-### 3. Ensure the Security of the Master Key
+#### 3. Ensure the Security of the Master Key
 Never commit your master.key or the credentials file to version control. Add the master.key to your .gitignore file to prevent it from being accidentally pushed to your repository:
 ```bash
 echo 'config/master.key' >> .gitignore
