@@ -13,8 +13,12 @@ Vitals is a user-centric web application designed to streamline the tracking of 
 * Rails 7
 * Tailwind
 * Daisy UI
+
+## Services Used
 * AWS S3
 * Open AI API
+
+Create an master_key file and add your API tokens for these services to the encrypted credentials file.
   
 ## Installation
 
