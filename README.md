@@ -51,10 +51,9 @@ echo 'config/master.key' >> .gitignore
 ```
 ## Installation
 
-Current Main Branch: rails 7 + esbuild
-
-Rails 6 + webpacker: https://github.com/mkhairi/rails-daisyui-starter/tree/rails6
-
+### Current Main Branch: rails 7 + esbuild
+* clone the repository and switch to the main branch
+* run the following commands
 
 ```sh
 bundle install
@@ -62,4 +61,7 @@ yarn install
 rails db:migrate
 bin/dev
 ```
+### Rails 6 + Webpacker
+* For the Rails 6 version, visit: https://github.com/mkhairi/rails-daisyui-starter/tree/rails6
+
 
