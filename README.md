@@ -98,4 +98,56 @@ After running the above commands one user with about 6 months of numeric and tex
 
 ## Contribution Guidelines
 
+### Introduction
+Thank you for your interest in contributing to [Vitals]. This document provides guidelines and instructions on how to contribute to the project.
+
+### How to Contribute
+1. **Setup your environment**: Follow the installation instructions above.
+2. **Find an issue to work on**: In the Projects tab, check out our issues, at times I may have some issues labeled "good first issue".
+
+## Coding Conventions
+We adhere to the Ruby community style guide, and we expect all contributors to follow suit. Here are key conventions specific to our project:
+
+- **Code Style**: Follow the [Ruby Style Guide](https://rubystyle.guide/), which provides detailed guidelines on the coding style preferred by the Ruby community.
+- **Naming Conventions**:
+  - Use `snake_case` for variables, methods, and file names.
+  - Use `PascalCase` for class and module names.
+  - Reflect domain concepts accurately in naming. For instance, if you are working within a medical application, prefer names like `patient_record` over vague terms like `data_entry`.
+
+- **Design Principles**: Focus on Domain-Driven Design (DDD):
+  - Organize code to reflect the domain model clearly.
+  - Use service objects, decorators, and other design patterns that help isolate domain logic from application logic.
+
+- **Testing Conventions**:
+  - Write tests for all new features and bug fixes.
+  - Use RSpec for testing, adhering to the [RSpec Style Guide](https://rspec.rubystyle.guide/).
+  - Ensure test names clearly describe their purpose, reflecting domain-specific terminology.
+
+## Comments and Documentation
+- **Comment your code** where necessary to explain "why" something is done, not "what" is done—source code should be self-explanatory regarding the "what".
+- **Document methods and classes** thoroughly, focusing on their roles within the domain model, especially for public APIs.
+
+## Version Control Practices
+- Commit messages should be clear and follow best practices, such as those outlined in [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/).
+- Keep commits focused on a single issue to simplify future maintenance and troubleshooting.
+
+### Branch Naming Conventions
+Please use the following naming conventions for your branches:
+- Features: `feature/<feature-name>`
+- Bug Fixes: `bugfix/<bug-description>`
+- Refactoring: `refactor/<refactor-subject>`
+
+### Pull Request Process
+1. **Creating a Pull Request**: Provide a detailed PR description, referencing the issue it addresses.
+2. **Review Process**: PRs require review from at least one maintainer.
+
+### Community and Communication
+Join our [Discord/Slack/Forum] to communicate with other contributors and maintainers.
+
+### Acknowledgment of Contributors
+Contributors who make significant contributions will be listed in our [README/CONTRIBUTORS] file.
+
+Thank you for contributing to [Project Name]!
+
+
 ## FAQ
