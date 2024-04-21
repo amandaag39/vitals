@@ -105,7 +105,7 @@ Thank you for your interest in contributing to [Vitals]. This document provides 
 1. **Setup your environment**: Follow the installation instructions above.
 2. **Find an issue to work on**: In the Projects tab, check out our issues, at times I may have some issues labeled "good first issue".
 
-## Coding Conventions
+### Coding Conventions
 We adhere to the Ruby community style guide, and we expect all contributors to follow suit. Here are key conventions specific to our project:
 
 - **Code Style**: Follow the [Ruby Style Guide](https://rubystyle.guide/), which provides detailed guidelines on the coding style preferred by the Ruby community.
@@ -123,11 +123,11 @@ We adhere to the Ruby community style guide, and we expect all contributors to f
   - Use RSpec for testing, adhering to the [RSpec Style Guide](https://rspec.rubystyle.guide/).
   - Ensure test names clearly describe their purpose, reflecting domain-specific terminology.
 
-## Comments and Documentation
+### Comments and Documentation
 - **Comment your code** where necessary to explain "why" something is done, not "what" is done—source code should be self-explanatory regarding the "what".
 - **Document methods and classes** thoroughly, focusing on their roles within the domain model, especially for public APIs.
 
-## Version Control Practices
+### Version Control Practices
 - Commit messages should be clear and follow best practices, such as those outlined in [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/).
 - Keep commits focused on a single issue to simplify future maintenance and troubleshooting.
 
@@ -147,7 +147,7 @@ Join our [Discord/Slack/Forum] to communicate with other contributors and mainta
 ### Acknowledgment of Contributors
 Contributors who make significant contributions will be listed in our [README/CONTRIBUTORS] file.
 
-Thank you for contributing to [Project Name]!
+Thank you for contributing to [Vitals]!
 
 
 ## FAQ
