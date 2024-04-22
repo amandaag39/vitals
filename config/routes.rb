@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'analysis/new', to: 'analysis#new', as: :new_analysis
 
   # Define the chart route above the resources declaration
-  get 'vitals/chart/:vital_id', to: 'vitals#chart', as: :vital_chart
+  get 'vitals/chart/:id', to: 'vitals#chart', as: :vital_chart
 
   resources :vitals
   resources :readings

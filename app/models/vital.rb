@@ -12,7 +12,7 @@
 class Vital < ApplicationRecord
   enum category: { numerical: 0, text: 1, image: 2 }
   belongs_to :user
-  has_many :readings, dependent: :restrict_with_error #:destroy
+  has_many :readings, dependent: :restrict_with_error
   validates :user, presence: true
   validates :name, uniqueness: { scope: :user_id }, presence: true
   validates :category, presence: true
@@ -20,7 +20,6 @@ class Vital < ApplicationRecord
   scope :numerical, -> { where(category: categories[:numerical]) }
   scope :text, -> { where(category: categories[:text]) }
   
-  #for managing the enum categories
   def self.category_options
     categories.keys.map { |key| [key.humanize, key] }
   end
