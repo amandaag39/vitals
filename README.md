@@ -87,8 +87,10 @@ rails db:migrate
 rake sample_data
 bin/dev
 ```
-After running the above commands one user with about 6 months of numeric and text data will be generated. Sign in with
-``alice@example.com`` and password: ``password``
+After running the above commands one user with about 6 months of numeric and text data will be generated. Sign in with:
+
+* Email: ``alice@example.com``
+* Password: ``password``
 
 ### Entity Relationship Diagram
 ![Screenshot 2024-03-20 at 4 30 33 PM](https://github.com/amandaag39/vitals/assets/71214594/25f5eeec-3e9a-4cae-a87d-dab81ea7640c)
