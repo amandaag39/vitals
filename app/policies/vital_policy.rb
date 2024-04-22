@@ -32,6 +32,10 @@ class VitalPolicy < ApplicationPolicy
   def destroy?
     record.user_id == user.id
   end
+
+  def chart?
+    user.id == record.user_id
+  end
 end
 
 
