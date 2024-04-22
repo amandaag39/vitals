@@ -152,15 +152,15 @@ Thank you for contributing to **Vitals**!
 
 ## FAQ
 
-### Ruby Version Errors
-The project is written using Ruby 3.1.1, if you encounter issues upon cloning, make sure you have Ruby version 3.1.1 in your environment.
+### AWS S3 Bucket Setup
+* To setup your AWS S3 bucket, sign up for an account here: [Sign Up for AWS Account](https://aws.amazon.com/)
+* For more setup help, see this guide: [AWS S3 Bucket and IAM User Setup Guide](https://medium.com/@emmanuelnwright/create-iam-users-and-s3-buckets-in-aws-264e78281f7f)
 
 ### Master Key Errors
-Be sure to follow the [Configuration Instructions](#configuration) if you encounter an issue when setting up the project.
-
-### AWS S3 Bucket Setup
-To setup your AWS S3 bucket, sign up for an account here: [Sign Up for AWS Account](https://aws.amazon.com/)
-For more setup help, see this guide: [AWS S3 Bucket and IAM User Setup Guide](https://medium.com/@emmanuelnwright/create-iam-users-and-s3-buckets-in-aws-264e78281f7f)
+* Be sure to follow the [Configuration Instructions](#configuration) if you encounter an issue when setting up the project.
 
 ### Open AI API Setup
+* For setup help, see the [Open AI Documentation](https://platform.openai.com/docs/introduction)
 
+### Ruby Version Errors
+* The project is written using Ruby 3.1.1, if you encounter issues upon cloning, make sure you have Ruby version 3.1.1 in your environment.
