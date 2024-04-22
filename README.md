@@ -99,7 +99,7 @@ After running the above commands one user with about 6 months of numeric and tex
 ## Contribution Guidelines
 
 ### Introduction
-Thank you for your interest in contributing to [Vitals]. This document provides guidelines and instructions on how to contribute to the project.
+Thank you for your interest in contributing to **Vitals**. This document provides guidelines and instructions on how to contribute to the project.
 
 ### How to Contribute
 1. **Setup your environment**: Follow the installation instructions above.
@@ -142,12 +142,25 @@ Please use the following naming conventions for your branches:
 2. **Review Process**: PRs require review from at least one maintainer.
 
 ### Community and Communication
-Join our [Discord/Slack/Forum] to communicate with other contributors and maintainers.
+Join our [Discord] to communicate with other contributors and maintainers.
 
 ### Acknowledgment of Contributors
 Contributors who make significant contributions will be listed in our [README/CONTRIBUTORS] file.
 
-Thank you for contributing to [Vitals]!
+Thank you for contributing to **Vitals**!
 
 
 ## FAQ
+
+### Ruby Version Errors
+The project is written using Ruby 3.1.1, if you encounter issues upon cloning, make sure you have Ruby version 3.1.1 in your environment.
+
+### Master Key Errors
+Be sure to follow the [Configuration Instructions](#configuration) if you encounter an issue when setting up the project.
+
+### AWS S3 Bucket Setup
+To setup your AWS S3 bucket, sign up for an account here: [Sign Up for AWS Account](https://aws.amazon.com/)
+For more setup help, see this guide: [AWS S3 Bucket and IAM User Setup Guide](https://medium.com/@emmanuelnwright/create-iam-users-and-s3-buckets-in-aws-264e78281f7f)
+
+### Open AI API Setup
+
