@@ -19,6 +19,8 @@ class ReadingsController < ApplicationController
   def new
     @reading = Reading.new
     @user_vitals = current_user.vitals
+    # Set the vital_id if it's passed as a parameter
+    @reading.vital_id = params[:vital_id] if params[:vital_id].present?
   end
 
   # GET /readings/1/edit

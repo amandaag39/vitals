@@ -6,11 +6,11 @@ class VitalPolicy < ApplicationPolicy
   end
 
   def index?
-    user.present?
+    true
   end
 
   def create?
-    user.present?
+    true
   end
 
   def new?
@@ -18,24 +18,28 @@ class VitalPolicy < ApplicationPolicy
   end
 
   def show?
-    record.user_id == user.id 
+    vital_owner
   end
 
   def update?
-    record.user_id == user.id
+    vital_owner
   end
 
   def edit?
-    update?
+    vital_owner
   end
 
   def destroy?
-    record.user_id == user.id
+    vital_owner
   end
 
   def chart?
-    user.id == record.user_id
+    vital_owner
+  end
+
+  private
+  
+  def vital_owner
+    record.user_id == user.id
   end
 end
-
-

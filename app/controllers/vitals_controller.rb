@@ -1,6 +1,6 @@
 class VitalsController < ApplicationController
-  before_action :set_vital, only: %i[ show edit update destroy ]
-  before_action :authorize_resource, except: %i[chart]
+  before_action :set_vital, only: %i[ show edit update destroy chart ]
+  before_action { authorize(@vital || Vital) }
 
   # GET /vitals or /vitals.json
   def index
@@ -58,15 +58,12 @@ class VitalsController < ApplicationController
 
   # For chart actions
   def chart
-    @selected_vital = current_user.vitals.find_by(id: params[:vital_id])
-    authorize @selected_vital
-  
     # Default date range to the last month if no specific range is provided
     start_date = params[:start_date].presence || 1.month.ago.beginning_of_day.to_date
     end_date = params[:end_date].presence || Date.current
     
-    if @selected_vital&.numerical?
-      @readings_for_chart = @selected_vital.readings
+    if @vital&.numerical?
+      @readings_for_chart = @vital.readings
                               .where(measured_at: start_date..end_date)
                               .group_by_day(:measured_at)
                               .average(:numeric_reading)
@@ -78,13 +75,10 @@ class VitalsController < ApplicationController
 
   private
 
-    def authorize_resource
-      authorize(@vital || Vital)
-    end
-
     def set_vital
       @vital = Vital.find(params[:id])
     end
+
 
     def vital_params
       params.require(:vital).permit(:name, :category)

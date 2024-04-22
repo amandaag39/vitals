@@ -38,7 +38,7 @@
               <div class="card-actions justify-end">
                 <% if vital.category == 'numerical'  %>
                   <p>
-                    <%= link_to vital_chart_path(vital_id: vital.id), class: "" do %>
+                    <%= link_to vital_chart_path(id: vital.id), class: "" do %>
                       <i class="fas fa-chart-line"></i>
                     <% end %>
                   </p>
