@@ -87,9 +87,6 @@ rails db:migrate
 rake sample_data
 bin/dev
 ```
-### Rails 6 + Webpacker
-* For the Rails 6 version, visit: https://github.com/mkhairi/rails-daisyui-starter/tree/rails6
-
 After running the above commands one user with about 6 months of numeric and text data will be generated. Sign in with
 ``alice@example.com`` and password: ``password``
 
