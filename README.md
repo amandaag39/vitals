@@ -132,9 +132,8 @@ We adhere to the Ruby community style guide, and we expect all contributors to f
 
 ### Branch Naming Conventions
 Please use the following naming conventions for your branches:
-- Features: `feature/<feature-name>`
-- Bug Fixes: `bugfix/<bug-description>`
-- Refactoring: `refactor/<refactor-subject>`
+
+- `<issue#-description>` (i.e 31-added-ransack-search)
 
 ### Pull Request Process
 1. **Creating a Pull Request**: Provide a detailed PR description, referencing the issue it addresses.
