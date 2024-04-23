@@ -26,7 +26,6 @@ class Reading < ApplicationRecord
   scope :for_vital_and_category, ->(name, category) {
     joins(:vital).where(vitals: { name: name, category: Vital.categories[category] })
   }
-  #scope :for_vital, -> (name, category) { joins(:vital).where( vitals: { name: name, category: category }) }
   scope :for_numerical_prompt, -> { select(:measured_at, :numeric_reading) }
   scope :for_text_prompt, -> { select(:measured_at, :text_reading) }
   scope :default_order, -> { order('readings.measured_at DESC') }
