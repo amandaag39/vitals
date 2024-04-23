@@ -56,21 +56,12 @@ class VitalsController < ApplicationController
     end
   end
 
-  # For chart actions
   def chart
-    # Default date range to the last month if no specific range is provided
     start_date = params[:start_date].presence || 1.month.ago.beginning_of_day.to_date
     end_date = params[:end_date].presence || Date.current
-    
-    if @vital&.numerical?
-      @readings_for_chart = @vital.readings
-                              .where(measured_at: start_date..end_date)
-                              .group_by_day(:measured_at)
-                              .average(:numeric_reading)
-    else
-      @readings_for_chart = {}
-      flash[:alert] = "Selected vital is not numerical or doesn't exist."
-    end
+  
+    @readings_for_chart = @vital.chart_data(start_date, end_date)
+    flash[:alert] = "Selected vital is not numerical or doesn't exist." if @readings_for_chart.empty?
   end
 
   private

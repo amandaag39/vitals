@@ -23,4 +23,12 @@ class Vital < ApplicationRecord
   def self.category_options
     categories.keys.map { |key| [key.humanize, key] }
   end
+
+  def chart_data(start_date, end_date)
+    return {} unless numerical?  # Ensure this method only works for numerical vitals
+
+    readings.measured_at_between(start_date, end_date)
+            .group_by_day(:measured_at)
+            .average(:numeric_reading)
+  end
 end
