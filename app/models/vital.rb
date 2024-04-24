@@ -24,6 +24,12 @@ class Vital < ApplicationRecord
     categories.keys.map { |key| [key.humanize, key] }
   end
 
+
+  def to_s 
+    "#{name}"
+  end
+
+
   def chart_data(start_date, end_date)
     return {} unless numerical?  # Ensure this method only works for numerical vitals
 

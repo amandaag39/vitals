@@ -24,21 +24,25 @@ class Reading < ApplicationRecord
   scope :measured_at_before, ->(end_date) { where("measured_at < ?", end_date) }
   scope :measured_at_after, ->(start_date) { where("measured_at > ?", start_date) }
   scope :for_vital_and_category, ->(name, category) {
-    joins(:vital).where(vitals: { name: name, category: Vital.categories[category] })
-  }
+          joins(:vital).where(vitals: { name: name, category: Vital.categories[category] })
+        }
   scope :for_numerical_prompt, -> { select(:measured_at, :numeric_reading) }
   scope :for_text_prompt, -> { select(:measured_at, :text_reading) }
-  scope :default_order, -> { order('readings.measured_at DESC') }
+  scope :default_order, -> { order("readings.measured_at DESC") }
+
+  def to_s
+    "#{vital.name}"
+  end
 
   private
 
   def appropriate_reading_type_present
     case vital.category
-    when 'numerical'
+    when "numerical"
       errors.add(:numeric_reading, "must be provided for a numerical vital") if numeric_reading.blank?
-    when 'text'
+    when "text"
       errors.add(:text_reading, "must be provided for a text vital") if text_reading.blank?
-    when 'image'
+    when "image"
       errors.add(:image, "must be attached for an image vital") unless image.attached?
     end
   end

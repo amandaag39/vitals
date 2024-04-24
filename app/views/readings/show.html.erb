@@ -1,8 +1,13 @@
-<%= render @reading %>
+<div class="flex">
+  <div class="px-2 mx-2">
+    <%= render "shared/breadcrumbs" %>
+    <div>
+    <br>
+    <%= render @reading %>
+    <br>
+    <%= link_to "Edit this reading", edit_reading_path(@reading), class: "btn btn-xs btn-accent" %> |
+    <%= link_to "Back to readings", readings_path, class: "btn btn-xs btn-outline btn-accent" %>
 
-<div>
-  <%= link_to "Edit this reading", edit_reading_path(@reading), class: "btn btn-xs btn-accent" %> |
-  <%= link_to "Back to readings", readings_path, class: "btn btn-xs btn-outline btn-accent" %>
-
-  <%= button_to "Destroy this reading", @reading, method: :delete, class: "btn btn-xs btn-error mt-2" %>
+    <%= button_to "Destroy this reading", @reading, method: :delete, class: "btn btn-xs btn-error mt-2" %>
+  </div>
 </div>
