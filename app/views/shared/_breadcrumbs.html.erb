@@ -4,13 +4,10 @@
       <% @breadcrumbs.each_with_index do |breadcrumb, index| %>
         <% unless breadcrumb == @breadcrumbs.last %>
           <li class="flex items-center">
-            <%= link_to breadcrumb.fetch(:content), breadcrumb[:href], class: "text-blue-600 hover:text-blue-800" %>
-            <svg class="w-4 h-4 mx-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
+            <%= link_to breadcrumb.fetch(:content), breadcrumb[:href], class: "text hover:text-white-800" %>
           </li>
         <% else %>
-          <li class="text-gray-700">
+          <li class="text-gray-600">
             <%= breadcrumb.fetch(:content) %>
           </li>
         <% end %>
