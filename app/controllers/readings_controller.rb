@@ -4,19 +4,33 @@ class ReadingsController < ApplicationController
 
   # GET /readings or /readings.json
   def index
+    @breadcrumbs = [
+      { content: "Log Entries", href: readings_path },
+    ]
     @readings = policy_scope(Reading).order(measured_at: :asc)
-  
+
     if @readings.exists?
-      @calendar, @pagy, @readings = pagy_calendar(@readings, 
-                                                  year: { size: [1, 1, 1, 1] }, 
+      @calendar, @pagy, @readings = pagy_calendar(@readings,
+                                                  year: { size: [1, 1, 1, 1] },
                                                   month: { size: [0, 12, 12, 0] },
-                                                  day: { size: [0, 31, 31, 0] }, 
+                                                  day: { size: [0, 31, 31, 0] },
                                                   pagy: { items: 10 })
     end
   end
 
+  def show
+    @breadcrumbs = [
+      { content: "Log Entries", href: readings_path },
+      { content: "#{@reading.to_s} Entry", href: edit_reading_path },
+    ]
+  end
+
   # GET /readings/new
   def new
+    @breadcrumbs = [
+      { content: "Log Entries", href: readings_path },
+      { content: "New Entry", href: new_reading_path },
+    ]
     @reading = Reading.new
     @user_vitals = current_user.vitals
     # Set the vital_id if it's passed as a parameter
@@ -25,6 +39,11 @@ class ReadingsController < ApplicationController
 
   # GET /readings/1/edit
   def edit
+    @breadcrumbs = [
+      { content: "Log Entries", href: readings_path },
+      { content: "#{@reading.to_s} Entry", href: reading_path },
+      { content: "Edit #{@reading.to_s} Entry", href: edit_reading_path },
+    ]
     @user_vitals = current_user.vitals
   end
 
@@ -65,25 +84,26 @@ class ReadingsController < ApplicationController
   end
 
   private
-    def set_reading
-      @reading = Reading.find(params[:id])
-    end
 
-    def reading_params
-      params.require(:reading).permit(:measured_at, :numeric_reading, :text_reading, :vital_id, :image)
-    end
+  def set_reading
+    @reading = Reading.find(params[:id])
+  end
 
-    # Pagy Calendar Pagination Methods
+  def reading_params
+    params.require(:reading).permit(:measured_at, :numeric_reading, :text_reading, :vital_id, :image)
+  end
 
-    def pagy_calendar_period(collection)
-      # Return the starting and ending times for your readings
-      starting = collection.minimum(:measured_at)
-      ending = collection.maximum(:measured_at)
-      [starting, ending]
-    end
-  
-    def pagy_calendar_filter(collection, from, to)
-      # Filter your collection based on selected period
-      collection.where(measured_at: from...to)
-    end
+  # Pagy Calendar Pagination Methods
+
+  def pagy_calendar_period(collection)
+    # Return the starting and ending times for your readings
+    starting = collection.minimum(:measured_at)
+    ending = collection.maximum(:measured_at)
+    [starting, ending]
+  end
+
+  def pagy_calendar_filter(collection, from, to)
+    # Filter your collection based on selected period
+    collection.where(measured_at: from...to)
+  end
 end
