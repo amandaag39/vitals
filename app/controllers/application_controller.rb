@@ -1,30 +1,30 @@
 class ApplicationController < ActionController::Base
-    include Pagy::Backend
+  include Pagy::Backend
 
-    # e.g. application_controller.rb
-    # def pagy_calendar_period(collection)
-    #     return_period_array_using(collection)
-    # end
-    
-    # e.g. application_controller.rb
-    # def pagy_calendar_filter(collection, from, to)
-    #     return_filtered_collection_using(collection, from, to)
-    # end
+  # e.g. application_controller.rb
+  # def pagy_calendar_period(collection)
+  #     return_period_array_using(collection)
+  # end
 
-    include Pundit
+  # e.g. application_controller.rb
+  # def pagy_calendar_filter(collection, from, to)
+  #     return_filtered_collection_using(collection, from, to)
+  # end
 
-    # Optional: Uncomment to ensure Pundit is used in every action.
-    # after_action :verify_authorized, except: :index
-    # after_action :verify_policy_scoped, only: :index
+  include Pundit
 
-    before_action :authenticate_user!
+  # Optional: Uncomment to ensure Pundit is used in every action.
+  # after_action :verify_authorized, except: :index
+  # after_action :verify_policy_scoped, only: :index
 
-    rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  before_action :authenticate_user!
 
-    private
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-    def user_not_authorized
-        flash[:alert] = "Tsk Tsk. You are not authorized to perform this action."
-        redirect_to(request.referrer || root_path)
-    end
+  private
+
+  def user_not_authorized
+    flash[:alert] = "Tsk Tsk. You are not authorized to perform this action."
+    redirect_to(request.referrer || root_path)
+  end
 end

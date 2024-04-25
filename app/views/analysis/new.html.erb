@@ -1,3 +1,4 @@
+<%= image_tag "correlations.gif", alt: "Dots Connecting" %>
 <div class="flex flex-col items-center">
   <div class="text-3xl my-4">
     <h2>AI Analysis</h2>
@@ -36,8 +37,8 @@
       }
   </script>
   <!-- Loading indicator -->
-  <div id="loading-indicator" class="text-center mt-8 col-span-2">
-    <strong>Chat is sorting through your logs and typing a response. This may take a few moments. Please wait.</strong><br>
+  <div id="loading-indicator" class="hidden text-center mt-8">
+    <strong>AI is sorting through your logs and typing a response. This may take a few moments. Please wait.</strong><br>
     <span class="loading loading-dots loading-lg"></span>
   </div>
   <!-- Analysis results -->

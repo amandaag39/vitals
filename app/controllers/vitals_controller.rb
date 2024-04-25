@@ -53,8 +53,8 @@ class VitalsController < ApplicationController
   def update
     respond_to do |format|
       if @vital.update(vital_params)
-        format.html { redirect_to vital_url(@vital), notice: "Vital was successfully updated." }
-        format.json { render :show, status: :ok, location: @vital }
+        format.html { redirect_to vitals_path, notice: "Vital was successfully updated." }
+        format.json { render :index, status: :ok, location: @vital }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @vital.errors, status: :unprocessable_entity }

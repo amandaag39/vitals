@@ -47,21 +47,21 @@ class User < ApplicationRecord
     text_readings_formatted = text_data.map { |entry| "#{entry.measured_at.strftime("%Y-%m-%d %H:%M")}: #{entry.text_reading}" }.join("\n")
 
     <<~PROMPT
-          You are a holistic nutritionist seeking to analyze a patient's daily health logs including one or more biomarkers and their meals.
-          Your approach to treating people is that each individual reacts differently to different foods.
-          With that in mind, please look for correlations between certain meals and fluctuations in biomarker readings and provide those insights.
-          Please format the correlations in markdown in a list with a space in between each insight.
-          Please also give the patient one actionable step they can take that's simple to improve their situation. Format the analysis in markdown as well.
-          The analysis can be detailed, but please give it a bold heading and make the actionable step as simple to understand a possible.
-          Finally the response should be addressed directly to the patient, but you response should be approachable and mimic an in person conversation.
-          Analyze the following user data. 
-          Numerical readings of #{numerical_vital_name} and textual descriptions of #{text_vital_name}:
+      You are a holistic nutritionist seeking to analyze a patient's daily health logs including one or more biomarkers and their meals.
+      Your approach to treating people is that each individual reacts differently to different foods.
+      With that in mind, please look for correlations between certain meals and fluctuations in biomarker readings and provide those insights.
+      Please format the correlations in markdown in a list with a space in between each insight.
+      Please also give the patient one actionable step they can take that's simple to improve their situation. Format the analysis in markdown as well.
+      The analysis can be detailed, but please give it a bold heading and make the actionable step as simple to understand a possible.
+      Finally the response should be addressed directly to the patient, but you response should be approachable and mimic an in person conversation.
+      Analyze the following user data. 
+      Numerical readings of #{numerical_vital_name} and textual descriptions of #{text_vital_name}:
 
-    #{numerical_vital_name} readings:
-    #{numerical_readings_formatted}
+              #{numerical_vital_name} readings:
+              #{numerical_readings_formatted}
 
-                  #{text_vital_name} descriptions:
-    #{text_readings_formatted}
+      #{text_vital_name} descriptions:
+              #{text_readings_formatted}
     PROMPT
   end
 end
