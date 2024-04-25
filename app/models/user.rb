@@ -57,11 +57,11 @@ class User < ApplicationRecord
       Analyze the following user data. 
       Numerical readings of #{numerical_vital_name} and textual descriptions of #{text_vital_name}:
 
-              #{numerical_vital_name} readings:
-              #{numerical_readings_formatted}
+      #{numerical_vital_name} readings:
+      #{numerical_readings_formatted}
 
       #{text_vital_name} descriptions:
-              #{text_readings_formatted}
+      #{text_readings_formatted}
     PROMPT
   end
 end

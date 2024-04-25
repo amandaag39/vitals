@@ -15,6 +15,7 @@ module ApplicationHelper
       fenced_code_blocks: true,
       tables: true,
       strikethrough: true,
+      hard_wrap: true,
     })
     markdown.render(markdown_content).html_safe
   end
