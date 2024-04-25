@@ -1,12 +1,33 @@
-<div id="<%= dom_id vital %>">
-  <p>
-    <h2 class="font-bold text-3xl"><%= vital.name %></h2>
-  </p>
-
-  <p>
-    <strong>Category:</strong>
-    <%= vital.category %>
-  </p>
-  <br>
-
+<div class="card w-96 <%= card_class %> text-primary-content mx-auto my-4 w-full">
+  <div class="card-body text-black">
+    <div id="<%= dom_id vital %>">
+      <p>
+        <h2 class="font-bold text-3xl"><%= vital.name %></h2>
+      </p>
+      <p>
+        <strong>Category:</strong>
+        <%= vital.category %>
+      </p>
+      <br>
+    </div>
+    <div class="card-actions justify-end">
+      <% if vital.category == "numerical" %>
+        <p>
+          <%= link_to vital_path(id: vital.id), class: "" do %>
+            <i class="fas fa-chart-line"></i>
+          <% end %>
+        </p>
+      <% end %>
+      <p>
+        <%= link_to edit_vital_path(vital), class: btn_class do %>
+          <i class="fas fa-pencil-alt"></i>
+        <% end %>
+      </p>
+      <p>
+        <%= link_to new_reading_path(vital_id: vital.id), class: "#{btn_class} ml-2" do %>
+          <i class="fas fa-plus"></i>
+        <% end %>
+      </p>
+    </div>
+  </div>
 </div>

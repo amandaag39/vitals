@@ -4,13 +4,11 @@
   </div>
   <!-- Right Content -->
 </div>
-
 <div class="min-h-screen flex justify-center w-full">
   <div class="flex flex-col items-center">
     <div>
       <h4 class="text-3xl mx-auto my-4 text-center">My Vitals</h4>
     </div>
-
     <div id="vitals" class="text-center flex flex-col items-center">
       <% if @vitals.empty? %>
         <div class="text-center">
@@ -35,34 +33,10 @@
                         else 'btn'
                         end
           %>
-          <div class="card w-96 <%= card_class %> text-primary-content mx-auto my-4 w-full">
-            <div class="card-body text-black">
-              <p><%= render vital %></p>
-              <div class="card-actions justify-end">
-                <% if vital.category == 'numerical'  %>
-                  <p>
-                    <%= link_to vital_chart_path(id: vital.id), class: "" do %>
-                      <i class="fas fa-chart-line"></i>
-                    <% end %>
-                  </p>
-                <% end %>
-                <p>
-                  <%= link_to edit_vital_path(vital), class: btn_class do %>
-                    <i class="fas fa-pencil-alt"></i>
-                  <% end %>
-                </p>
-                <p>
-                  <%= link_to new_reading_path(vital_id: vital.id), class: "#{btn_class} ml-2" do %>
-                    <i class="fas fa-plus"></i>
-                  <% end %>
-                </p>
-              </div>
-            </div>
-          </div>
+          <%= render vital, card_class: card_class, btn_class: btn_class %>
         <% end %>
       <% end %>
     </div>
-
     <% unless @vitals.empty? %>
       <div>
         <%= link_to "Create a new custom vital", new_vital_path, class: "btn" %>

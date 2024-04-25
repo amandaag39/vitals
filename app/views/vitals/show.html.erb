@@ -1,18 +1,50 @@
-<div class="flex flex-col">
+<div class="flex">
+  <div class="px-2 mx-2">
+    <%= render "shared/breadcrumbs" %>
+  </div>
   <!-- Right Content -->
 </div>
-
-<div class="min-h-screen flex flex-col items-center mt-8">
-  <%= render @vital %>
-  <div class="flex items-center">
-    <%= link_to edit_vital_path(@vital), class: "btn btn-xs btn-accent" do %>
-      <i class="fa-solid fa-pen-to-square"></i>
-    <% end %> |
-
-    <%= button_to @vital, method: :delete, data: { confirm: 'Are you sure you want to delete this vital? All related readings will also be deleted.' }, class: "btn btn-xs btn-error", form_class: "inline" do %>
-      <i class="fa-regular fa-trash-can"></i>
-    <% end %>    
+<div class= "min-h-screen w-full">
+  <div>
+    <h4 class="text-3xl mx-auto my-4 text-center font-bold"><%= @vital.name %> Chart</h4>
+    <h4 class="text-2xl mx-auto my-4 text-center"><%= chart_title(params[:time_frame]) %></h4>
+    <%= line_chart @readings_for_chart, library: {
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Dates'
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Readings'
+          }
+        }
+      },
+      title: {
+        display: true,
+        text: @vital.name
+      }
+    }, 
+      height: '500px',
+      download: true
+      %>
   </div>
-  <br>
-    <%= link_to "Back to vitals", vitals_path, class: "btn btn-xs btn-outline btn-accent" %>
+  <div class="text-right mt-4 mb-4">
+    <%= form_tag(vital_path, method: "get", class: "time-frame-form") do %>
+      <%= hidden_field_tag :vital_id, @vital.id %>
+      <div>
+        <label for="start_date">Show from:</label>
+        <%= date_field_tag :start_date, params[:start_date], class: "select select-secondary w-auto max-w-xs mb-4" %>
+      </div>
+      <div>
+        <label for="end_date">To:</label>
+        <%= date_field_tag :end_date, params[:end_date], class: "select select-secondary w-auto max-w-xs" %>
+      </div>
+      <%= submit_tag "Update Chart", class: "btn btn-primary mt-4" %>
+      <%= link_to "Back to vitals", vitals_path, class: "btn" %>
+    <% end %>
+  </div>
 </div>

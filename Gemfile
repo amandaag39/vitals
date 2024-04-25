@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.1.1"
 
 # AWS S3
-gem 'aws-sdk-s3', require: false
+gem "aws-sdk-s3", require: false
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -13,13 +13,13 @@ gem 'aws-sdk-s3', require: false
 gem "bootsnap", require: false
 
 # Chartkick gem for charts
-gem 'chartkick'
+gem "chartkick"
 
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
 gem "cssbundling-rails"
 
 # For grouping date methods
-gem 'groupdate'
+gem "groupdate"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
@@ -37,7 +37,7 @@ gem "jsbundling-rails"
 # gem "kredis"
 
 # Pagy gem for pagination
-gem 'pagy'
+gem "pagy"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -52,7 +52,7 @@ gem "pundit"
 gem "rails", "~> 7.0.7", ">= 7.0.7"
 
 # Markdown processing gem
-gem 'redcarpet'
+gem "redcarpet"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
@@ -104,7 +104,7 @@ end
 # ===========
 gem "appdev_support"
 gem "awesome_print"
-gem "devise" 
+gem "devise"
 gem "dotenv-rails"
 gem "faker"
 gem "htmlbeautifier"
@@ -116,6 +116,7 @@ group :development do
   gem "annotate"
   gem "better_errors"
   gem "binding_of_caller"
+  gem "bullet"
   gem "draft_generators"
   gem "grade_runner"
   gem "pry-rails"
@@ -127,12 +128,12 @@ group :development do
 end
 
 group :development, :test do
-  gem 'factory_bot_rails'
+  gem "factory_bot_rails"
   gem "rspec-rails", "~> 6.0.0"
 end
 
 group :test do
-  gem "draft_matchers"#, "0.0.2"#path: "../../my_stuff/draft_matchers"
+  gem "draft_matchers" #, "0.0.2"#path: "../../my_stuff/draft_matchers"
   # gem "draft_matchers"
   gem "rspec-html-matchers"
   gem "webmock"

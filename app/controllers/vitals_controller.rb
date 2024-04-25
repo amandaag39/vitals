@@ -22,6 +22,18 @@ class VitalsController < ApplicationController
     ]
   end
 
+  def show
+    @breadcrumbs = [
+      { content: "Vitals", href: vitals_path },
+      { content: "#{@vital.to_s} Chart", href: vital_path },
+    ]
+    start_date = params[:start_date].presence || 1.month.ago.beginning_of_day.to_date
+    end_date = params[:end_date].presence || Date.current
+
+    @readings_for_chart = @vital.chart_data(start_date, end_date)
+    flash.now[:alert] = "No data exists within this date range." if @readings_for_chart.empty?
+  end
+
   # POST /vitals or /vitals.json
   def create
     @vital = current_user.vitals.new(vital_params)
@@ -64,18 +76,6 @@ class VitalsController < ApplicationController
         format.json { head :no_content }
       end
     end
-  end
-
-  def chart
-    @breadcrumbs = [
-      { content: "Vitals", href: vitals_path },
-      { content: "#{@vital.to_s} Chart", href: vital_chart_path },
-    ]
-    start_date = params[:start_date].presence || 1.month.ago.beginning_of_day.to_date
-    end_date = params[:end_date].presence || Date.current
-
-    @readings_for_chart = @vital.chart_data(start_date, end_date)
-    flash[:alert] = "Selected vital is not numerical or doesn't exist." if @readings_for_chart.empty?
   end
 
   private
