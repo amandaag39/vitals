@@ -13,7 +13,8 @@ class OpenAiChatService
           model: "gpt-4-0125-preview",
           messages: [{ role: "user", content: @prompt }],
           temperature: 1.09,
-        })
+        },
+      )
       response.dig("choices", 0, "message", "content")
     rescue Faraday::ClientError => e
       puts e.message

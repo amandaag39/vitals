@@ -12,26 +12,22 @@
           <div class="text-5xl my-4"><%= reading.numeric_reading %></div>
         </p>
       <% end %>
-
       <% if reading.image.attached? %>
         <p>
           <strong>Image:</strong>
           <%= image_tag reading.image, class: "w-25 h-25 rounded-xl" %>
         </p>
       <% end %>
-
       <% if reading.text_reading.present? %>
         <p>
           <strong>Text reading:</strong>
           <div class="my-4"><%= reading.text_reading %></div>
         </p>
       <% end %>
-      
       <p>
         <strong>Measured at:</strong>
         <div class= "my-4"><%= reading.measured_at.strftime('%B %d %Y %T') %></div>
       </p>
-      
       <p>
         <div class="text-right">
           <%= link_to reading do %>
@@ -40,6 +36,6 @@
         </div>
       </p>
       <br>
-    </div>   
+    </div>
   </div>
 </div>

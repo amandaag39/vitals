@@ -7,7 +7,7 @@ class ReadingsController < ApplicationController
     @breadcrumbs = [
       { content: "Log Entries", href: readings_path },
     ]
-    @readings = policy_scope(Reading).order(measured_at: :asc)
+    @readings = policy_scope(Reading.includes(:vital, image_attachment: :blob)).order(measured_at: :asc)
 
     if @readings.exists?
       @calendar, @pagy, @readings = pagy_calendar(@readings,

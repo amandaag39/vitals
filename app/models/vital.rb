@@ -19,16 +19,14 @@ class Vital < ApplicationRecord
 
   scope :numerical, -> { where(category: categories[:numerical]) }
   scope :text, -> { where(category: categories[:text]) }
-  
+
   def self.category_options
     categories.keys.map { |key| [key.humanize, key] }
   end
 
-
-  def to_s 
+  def to_s
     "#{name}"
   end
-
 
   def chart_data(start_date, end_date)
     return {} unless numerical?  # Ensure this method only works for numerical vitals

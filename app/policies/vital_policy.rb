@@ -38,7 +38,7 @@ class VitalPolicy < ApplicationPolicy
   end
 
   private
-  
+
   def vital_owner
     record.user_id == user.id
   end
