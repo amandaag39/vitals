@@ -19,6 +19,9 @@ class User < ApplicationRecord
   has_many :vitals, dependent: :destroy
   has_many :readings, through: :vitals
 
+  # This code could benefit from more comments.
+  # Looks like it could be a concern or a service object. Probably in OpenAiChatService
+  # You could benefit from a more OOP approach
   # TODO: consider combining numeric_reading and text_reading into 1 'value' column
   def fetch_numerical_data(numerical_vital_name, start_date, end_date)
     readings
@@ -54,7 +57,7 @@ class User < ApplicationRecord
       Please also give the patient one actionable step they can take that's simple to improve their situation. Format the analysis in markdown as well.
       The analysis can be detailed, but please give it a bold heading and make the actionable step as simple to understand a possible.
       Finally the response should be addressed directly to the patient, but you response should be approachable and mimic an in person conversation.
-      Analyze the following user data. 
+      Analyze the following user data.
       Numerical readings of #{numerical_vital_name} and textual descriptions of #{text_vital_name}:
 
       #{numerical_vital_name} readings:

@@ -1,5 +1,6 @@
+# delete unused model
 class View < ApplicationRecord
-  
+
   # TO DO: Bug fix-Delete this table without breaking the app
 
   # Include default devise modules. Others available are:
