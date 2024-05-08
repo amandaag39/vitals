@@ -19,7 +19,7 @@ class Reading < ApplicationRecord
   belongs_to :vital
   belongs_to :user
   has_one_attached :image
-
+  # nice scopes!
   scope :measured_at_between, ->(start_date, end_date) { where(measured_at: start_date..end_date) }
   scope :measured_at_before, ->(end_date) { where("measured_at < ?", end_date) }
   scope :measured_at_after, ->(start_date) { where("measured_at > ?", start_date) }
@@ -29,7 +29,7 @@ class Reading < ApplicationRecord
   scope :for_numerical_prompt, -> { select(:measured_at, :numeric_reading) }
   scope :for_text_prompt, -> { select(:measured_at, :text_reading) }
   scope :default_order, -> { order("readings.measured_at DESC") }
-
+  # good idea overring to_s method
   def to_s
     "#{vital.name}"
   end
