@@ -24,6 +24,7 @@ class Vital < ApplicationRecord
     categories.keys.map { |key| [key.humanize, key] }
   end
 
+  # should be in private block
   def to_s
     "#{name}"
   end

@@ -1,3 +1,4 @@
+# nice service object! 
 # app/services/open_ai_chat_service.rb
 
 class OpenAiChatService

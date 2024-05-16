@@ -1,5 +1,6 @@
 class ReadingsController < ApplicationController
   before_action :set_reading, only: %i[ show edit update destroy ]
+  # Good!
   before_action { authorize(@reading || Reading) }
 
   # GET /readings or /readings.json
